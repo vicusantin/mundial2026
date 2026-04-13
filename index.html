@@ -174,6 +174,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 
     <!-- HOME -->
     <div id="sec-home" class="section active">
+
+      <!-- 1. TÍTULO -->
+      <div class="page-header">
+        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
+        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
+      </div>
+
+      <!-- 2. COUNTDOWN -->
       <div class="countdown">
         <div class="cd-label">Faltan para el viaje</div>
         <div class="cd-title">Buenos Aires → Miami ✈️</div>
@@ -186,12 +194,16 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         </div>
       </div>
 
-      <div class="page-header">
-        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
-        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
+      <!-- 3. PRÓXIMAS PARADAS -->
+      <div class="home-card" onclick="navTo('itinerario')">
+        <div class="home-card-header">
+          <span class="home-card-title">🗓️ Próximas paradas</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div id="preview-itinerario"></div>
       </div>
 
-      <!-- Preview Entradas -->
+      <!-- 4. ENTRADAS -->
       <div class="home-card" onclick="navTo('entradas')">
         <div class="home-card-header">
           <span class="home-card-title">🎟️ Entradas</span>
@@ -216,34 +228,21 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         </div>
       </div>
 
-      <!-- Preview Gastos a pagar -->
-      <div class="home-card" onclick="navTo('gastos')">
+      <!-- 5. PENDIENTES PREVIEW -->
+      <div class="home-card" onclick="navTo('pendientes')">
         <div class="home-card-header">
-          <span class="home-card-title">💰 Gastos a pagar</span>
+          <span class="home-card-title">📋 Pendientes</span>
           <span class="home-card-link">Ver todo →</span>
         </div>
-        <div style="margin-top:6px;display:flex;flex-direction:column;gap:6px;">
-          <div class="home-gasto-row"><span>Aloj. Dallas</span><span style="color:var(--amber);font-weight:700;">$1.912 · vence 8/6</span></div>
-          <div class="home-gasto-row"><span>Aloj. Chicago (resto)</span><span style="color:var(--amber);font-weight:700;">$654 · vence 2/6</span></div>
-          <div class="home-gasto-row"><span>Aloj. Miami</span><span style="color:var(--amber);font-weight:700;">$1.103 · vence 23/6</span></div>
-          <div class="home-gasto-row"><span>Aloj. Atlanta</span><span style="color:var(--amber);font-weight:700;">$1.382 · vence 26/6</span></div>
-        </div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:12px;color:var(--muted);">Total por pagar</span>
-          <span style="font-size:17px;font-weight:800;color:var(--amber);">$4.844</span>
+        <div style="margin-top:4px;display:flex;flex-direction:column;gap:0;">
+          <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Conseguir entradas ARG-AUT (Dallas, 22/6)</div></div>
+          <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Confirmar entradas 16avos (Miami, 3/7)</div></div>
+          <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Pagar Dallas completo (8/6)</div></div>
+          <div class="check-item" style="padding:7px 0;font-size:13px;border-bottom:none;"><div class="cdot cdot-todo">!</div><div>Reservar vuelo Miami–Atlanta</div></div>
         </div>
       </div>
 
-      <!-- PREVIEW ITINERARIO DINÁMICO -->
-      <div class="home-card" onclick="navTo('itinerario')">
-        <div class="home-card-header">
-          <span class="home-card-title">🗓️ Próximas paradas</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
-        <div id="preview-itinerario"></div>
-      </div>
-
-      <!-- PREVIEW FIXTURE DINÁMICO -->
+      <!-- 6. FIXTURE PREVIEW -->
       <div class="home-card" onclick="navTo('fixture')">
         <div class="home-card-header">
           <span class="home-card-title">🌍 Próximos partidos</span>
@@ -251,6 +250,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         </div>
         <div id="preview-fixture"></div>
       </div>
+
     </div>
 
     <!-- FIXTURE COMPLETO -->
@@ -437,10 +437,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 
   <nav class="bottom-nav">
     <button class="nav-item" onclick="nav('itinerario',this)"><span class="nav-icon">🗓️</span><span>Itinerario</span></button>
-    <button class="nav-item" onclick="nav('fixture',this)"><span class="nav-icon">⚽</span><span>Fixture</span></button>
+    <button class="nav-item" onclick="nav('alojamiento',this)"><span class="nav-icon">🛏️</span><span>Alojamiento</span></button>
     <button class="nav-item active" onclick="nav('home',this)"><span class="nav-icon">🏠</span><span>Resumen</span></button>
     <button class="nav-item" onclick="nav('gastos',this)"><span class="nav-icon">💰</span><span>Gastos</span></button>
-    <button class="nav-item" onclick="nav('pendientes',this)"><span class="nav-icon">📋</span><span>Pendientes</span></button>
+    <button class="nav-item" onclick="nav('fixture',this)"><span class="nav-icon">⚽</span><span>Fixture</span></button>
   </nav>
 </div>
 
@@ -695,7 +695,7 @@ var CIUDAD_POR_DIA = {
 };
 var CT_CITIES = ['Kansas City','Chicago','Dallas','New Orleans','Pensacola'];
 function etToLocal(etStr, ciudad) {
-  if (ciudad === 'Buenos Aires') return null;
+  if (ciudad === 'Buenos Aires') return etStr.replace(/:00 /,'hs ').replace('AM','AM').replace('PM','PM');
   var isCT = CT_CITIES.indexOf(ciudad) >= 0;
   var m = etStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
   if (!m) return etStr;
