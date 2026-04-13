@@ -245,10 +245,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="eform-ttl">Cargar gasto</div>
         <input type="text" id="e-desc" placeholder="Descripción (ej: cena en NOLA)"/>
         <input type="number" id="e-monto" placeholder="Monto en USD" min="0" step="0.01" inputmode="decimal"/>
-        <select id="e-quien"><option value="vos">Pagó: Vos</option><option value="ivan">Pagó: Ivan</option><option value="edu">Pagó: Eduardo</option></select>
+        <select id="e-quien"><option value="vos">Pagó: Vicky</option><option value="ivan">Pagó: Ivan</option><option value="edu">Pagó: Eduardo</option></select>
         <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Dividir entre:</div>
         <div class="echips">
-          <span class="wchip cv on" id="c-v" onclick="toggleC('vos')">Vos</span>
+          <span class="wchip cv on" id="c-v" onclick="toggleC('vos')">Vicky</span>
           <span class="wchip ci on" id="c-i" onclick="toggleC('ivan')">Ivan</span>
           <span class="wchip ce on" id="c-e" onclick="toggleC('edu')">Eduardo</span>
         </div>
@@ -333,7 +333,7 @@ setInterval(tick, 1000);
 
 var sw = { vos: true, ivan: true, edu: true };
 window._splitWho = sw;
-var N = { vos: 'Vos', ivan: 'Ivan', edu: 'Eduardo' };
+var N = { vos: 'Vicky', ivan: 'Ivan', edu: 'Eduardo' };
 
 function toggleC(w) {
   sw[w] = !sw[w];
@@ -360,7 +360,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const gastosRef = ref(db, 'gastos');
-const names = { vos: 'Vos', ivan: 'Ivan', edu: 'Eduardo' };
+const names = { vos: 'Vicky', ivan: 'Ivan', edu: 'Eduardo' };
 const avClass = { vos: 'av-v', ivan: 'av-i', edu: 'av-e' };
 const initials = { vos: 'VO', ivan: 'IV', edu: 'ED' };
 
