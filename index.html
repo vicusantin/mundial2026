@@ -134,6 +134,19 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .home-card-link{font-size:12px;color:var(--green);font-weight:600;}
 .home-gasto-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:4px 0;border-bottom:1px solid #f0ede8;}
 .home-gasto-row:last-child{border-bottom:none;}
+/* FIXTURE */
+.fix-day{margin-bottom:10px;}
+.fix-day-header{background:var(--green-dark);color:white;border-radius:10px 10px 0 0;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;}
+.fix-day-date{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.fix-day-city{font-size:11px;opacity:.75;}
+.fix-match{background:var(--card);border:1px solid var(--border);border-top:none;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.fix-match:last-child{border-radius:0 0 10px 10px;}
+.fix-match.arg{background:#EAF3DE;border-color:#b8dca8;}
+.fix-teams{font-size:13px;font-weight:600;flex:1;}
+.fix-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.fix-time{font-size:13px;font-weight:700;color:var(--green-dark);white-space:nowrap;text-align:right;}
+.fix-tz{font-size:10px;color:var(--muted);text-align:right;}
+
 
 .page-header{margin-bottom:14px;}
 .page-title{font-size:22px;font-weight:800;}
@@ -231,6 +244,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
           <span style="font-size:17px;font-weight:800;color:var(--amber);">$4.844</span>
         </div>
       </div>
+
+      <!-- FIXTURE -->
+      <div style="margin-bottom:14px;">
+        <div class="page-title" style="font-size:17px;margin-bottom:2px;">Fixture del Mundial 🌍</div>
+        <div style="font-size:12px;color:var(--muted);">Horarios locales según ciudad del viaje</div>
+      </div>
+
+      <div id="fixture-list"></div>
     </div>
 
     <!-- ITINERARIO -->
@@ -652,6 +673,85 @@ function toggleSug(row, dia) {
       return '<div class="sug-item">' + s.e + ' <b>' + s.t + '</b> — ' + s.d + '</div>';
     }).join('');
 }
+
+
+// ─── FIXTURE DEL MUNDIAL ───────────────────────────────────────────────
+var CIUDAD_POR_DIA = {
+  '13/6':'Buenos Aires','14/6':'Miami','15/6':'Kansas City','16/6':'Kansas City',
+  '17/6':'Chicago','18/6':'Chicago','19/6':'Chicago','20/6':'Chicago','21/6':'Chicago',
+  '22/6':'Dallas','23/6':'Dallas','24/6':'Dallas','25/6':'Dallas','26/6':'Dallas','27/6':'Dallas',
+  '28/6':'New Orleans','29/6':'New Orleans','30/6':'New Orleans',
+  '1/7':'Pensacola','2/7':'Miami','3/7':'Miami','4/7':'Miami','5/7':'Miami',
+  '6/7':'Atlanta','7/7':'Atlanta','8/7':'Atlanta',
+  '9/7':'Miami','10/7':'Miami','11/7':'Miami'
+};
+var CT_CITIES = ['Kansas City','Chicago','Dallas','New Orleans','Pensacola'];
+function etToLocal(etStr, ciudad) {
+  if (ciudad === 'Buenos Aires') return null;
+  var isCT = CT_CITIES.indexOf(ciudad) >= 0;
+  var m = etStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return etStr;
+  var h = parseInt(m[1]), min = m[2], ampm = m[3].toUpperCase();
+  if (ampm === 'PM' && h !== 12) h += 12;
+  if (ampm === 'AM' && h === 12) h = 0;
+  if (isCT) h -= 1;
+  if (h < 0) h += 24;
+  var suffix = h >= 12 ? 'PM' : 'AM';
+  var h12 = h % 12 || 12;
+  return h12 + ':' + min + ' ' + suffix;
+}
+var FIXTURE = [
+  {dia:'13/6',partidos:[{eq:'Brasil vs Marruecos',hora:'6:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Haiti vs Escocia',hora:'9:00 PM',sede:'Gillette, Boston',arg:false}]},
+  {dia:'14/6',partidos:[{eq:'Alemania vs Curazao',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Paises Bajos vs Japon',hora:'4:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Costa de Marfil vs Ecuador',hora:'7:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Suecia vs Tunez',hora:'10:00 PM',sede:'BBVA, Monterrey',arg:false}]},
+  {dia:'15/6',partidos:[{eq:'Espana vs Cabo Verde',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Belgica vs Egipto',hora:'3:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Arabia Saudita vs Uruguay',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Iran vs Nueva Zelanda',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
+  {dia:'16/6',partidos:[{eq:'Francia vs Senegal',hora:'3:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Irak vs Noruega',hora:'6:00 PM',sede:'Gillette, Boston',arg:false},{eq:'ARGENTINA vs Argelia',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:true},{eq:'Austria vs Jordania',hora:'12:00 AM',sede:'Levis, Santa Clara',arg:false}]},
+  {dia:'17/6',partidos:[{eq:'Portugal vs RD Congo',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Inglaterra vs Croacia',hora:'4:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Ghana vs Panama',hora:'7:00 PM',sede:'BMO, Toronto',arg:false},{eq:'Uzbekistan vs Colombia',hora:'10:00 PM',sede:'Azteca, Mexico',arg:false}]},
+  {dia:'18/6',partidos:[{eq:'Chequia vs Sudafrica',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Suiza vs Bosnia',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false},{eq:'Canada vs Qatar',hora:'6:00 PM',sede:'BC Place, Vancouver',arg:false},{eq:'Mexico vs Corea del Sur',hora:'9:00 PM',sede:'Akron, Zapopan',arg:false}]},
+  {dia:'19/6',partidos:[{eq:'Turquia vs Paraguay',hora:'12:00 AM',sede:'Levis, Santa Clara',arg:false},{eq:'USA vs Australia',hora:'3:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Escocia vs Marruecos',hora:'6:00 PM',sede:'Gillette, Boston',arg:false},{eq:'Brasil vs Haiti',hora:'9:00 PM',sede:'Lincoln, Phila.',arg:false}]},
+  {dia:'20/6',partidos:[{eq:'Tunez vs Japon',hora:'12:00 AM',sede:'BBVA, Monterrey',arg:false},{eq:'Paises Bajos vs Suecia',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Alemania vs Costa de Marfil',hora:'4:00 PM',sede:'BMO, Toronto',arg:false},{eq:'Ecuador vs Curazao',hora:'8:00 PM',sede:'Arrowhead, Kansas City',arg:false}]},
+  {dia:'21/6',partidos:[{eq:'Espana vs Arabia Saudita',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Belgica vs Iran',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false},{eq:'Uruguay vs Cabo Verde',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Nueva Zelanda vs Egipto',hora:'9:00 PM',sede:'BC Place, Vancouver',arg:false}]},
+  {dia:'22/6',partidos:[{eq:'ARGENTINA vs Austria',hora:'1:00 PM',sede:'AT&T, Dallas',arg:true},{eq:'Francia vs Irak',hora:'5:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Noruega vs Senegal',hora:'8:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Jordania vs Argelia',hora:'11:00 PM',sede:'Levis, Santa Clara',arg:false}]},
+  {dia:'23/6',partidos:[{eq:'Portugal vs Uzbekistan',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Inglaterra vs Ghana',hora:'4:00 PM',sede:'Gillette, Boston',arg:false},{eq:'Panama vs Croacia',hora:'7:00 PM',sede:'BMO, Toronto',arg:false},{eq:'Colombia vs RD Congo',hora:'10:00 PM',sede:'Akron, Zapopan',arg:false}]},
+  {dia:'24/6',partidos:[{eq:'Suiza vs Canada',hora:'3:00 PM',sede:'BC Place, Vancouver',arg:false},{eq:'Bosnia vs Qatar',hora:'3:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Escocia vs Brasil',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Marruecos vs Haiti',hora:'6:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Chequia vs Mexico',hora:'9:00 PM',sede:'Azteca, Mexico',arg:false},{eq:'Sudafrica vs Corea del Sur',hora:'9:00 PM',sede:'BBVA, Monterrey',arg:false}]},
+  {dia:'25/6',partidos:[{eq:'Curazao vs Costa de Marfil',hora:'4:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Ecuador vs Alemania',hora:'4:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Japon vs Suecia',hora:'7:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Tunez vs Paises Bajos',hora:'7:00 PM',sede:'Arrowhead, Kansas City',arg:false},{eq:'Turquia vs USA',hora:'10:00 PM',sede:'SoFi, Los Angeles',arg:false},{eq:'Paraguay vs Australia',hora:'10:00 PM',sede:'Levis, Santa Clara',arg:false}]},
+  {dia:'26/6',partidos:[{eq:'Noruega vs Francia',hora:'3:00 PM',sede:'Gillette, Boston',arg:false},{eq:'Senegal vs Irak',hora:'3:00 PM',sede:'BMO, Toronto',arg:false},{eq:'Cabo Verde vs Arabia Saudita',hora:'8:00 PM',sede:'NRG, Houston',arg:false},{eq:'Uruguay vs Espana',hora:'8:00 PM',sede:'Akron, Zapopan',arg:false},{eq:'Egipto vs Iran',hora:'11:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Nueva Zelanda vs Belgica',hora:'11:00 PM',sede:'BC Place, Vancouver',arg:false}]},
+  {dia:'27/6',partidos:[{eq:'Panama vs Inglaterra',hora:'5:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Croacia vs Ghana',hora:'5:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Colombia vs Portugal',hora:'7:30 PM',sede:'Hard Rock, Miami',arg:false},{eq:'RD Congo vs Uzbekistan',hora:'7:30 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Argelia vs Austria',hora:'10:00 PM',sede:'Arrowhead, Kansas City',arg:false},{eq:'Jordania vs ARGENTINA',hora:'10:00 PM',sede:'AT&T, Dallas',arg:true}]},
+  {dia:'28/6',partidos:[{eq:'2do A vs 2do B (R32)',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
+  {dia:'29/6',partidos:[{eq:'1ro C vs 2do F (R32)',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'1ro E vs 3ro mejor (R32)',hora:'4:30 PM',sede:'Gillette, Boston',arg:false},{eq:'1ro F vs 2do C (R32)',hora:'9:00 PM',sede:'BBVA, Monterrey',arg:false}]},
+  {dia:'30/6',partidos:[{eq:'2do E vs 2do I (R32)',hora:'1:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'1ro I vs 3ro mejor (R32)',hora:'5:00 PM',sede:'MetLife, NJ',arg:false},{eq:'1ro A vs 3ro mejor (R32)',hora:'9:00 PM',sede:'Azteca, Mexico',arg:false}]},
+  {dia:'1/7',partidos:[{eq:'1ro L vs 3ro mejor (R32)',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'1ro G vs 3ro mejor (R32)',hora:'4:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'1ro D vs 3ro mejor (R32)',hora:'8:00 PM',sede:'Levis, Santa Clara',arg:false}]},
+  {dia:'2/7',partidos:[{eq:'1ro H vs 2do J (R32)',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false},{eq:'2do K vs 2do L (R32)',hora:'7:00 PM',sede:'BMO, Toronto',arg:false},{eq:'1ro B vs 3ro mejor (R32)',hora:'11:00 PM',sede:'BC Place, Vancouver',arg:false}]},
+  {dia:'3/7',partidos:[{eq:'2do D vs 2do G (R32)',hora:'2:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'1ro J (posible ARG) vs 2do H (R32)',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:true},{eq:'1ro K vs 3ro mejor (R32)',hora:'9:30 PM',sede:'Arrowhead, Kansas City',arg:false}]},
+  {dia:'4/7',partidos:[{eq:'Octavos de final',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Octavos de final',hora:'5:00 PM',sede:'Lincoln, Phila.',arg:false}]},
+  {dia:'5/7',partidos:[{eq:'Octavos de final',hora:'4:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Octavos de final',hora:'8:00 PM',sede:'Azteca, Mexico',arg:false}]},
+  {dia:'6/7',partidos:[{eq:'Octavos de final',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Octavos de final',hora:'8:00 PM',sede:'Lumen Field, Seattle',arg:false}]},
+  {dia:'7/7',partidos:[{eq:'Octavos (posible ARG)',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:true},{eq:'Octavos de final',hora:'4:00 PM',sede:'BC Place, Vancouver',arg:false}]},
+  {dia:'9/7',partidos:[{eq:'Cuartos de final',hora:'4:00 PM',sede:'Gillette, Boston',arg:false}]},
+  {dia:'10/7',partidos:[{eq:'Cuartos de final',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
+  {dia:'11/7',partidos:[{eq:'Cuartos de final',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Cuartos de final',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:false}]}
+];
+function renderFixture() {
+  var el = document.getElementById('fixture-list');
+  if (!el) return;
+  var html = '';
+  FIXTURE.forEach(function(day) {
+    var ciudad = CIUDAD_POR_DIA[day.dia] || '';
+    var hasArg = day.partidos.some(function(p){return p.arg;});
+    var isCT = CT_CITIES.indexOf(ciudad) >= 0;
+    var tzLabel = isCT ? 'CT' : 'ET';
+    html += '<div class="fix-day">';
+    html += '<div class="fix-day-header"><span class="fix-day-date">' + (hasArg?'🇦🇷 ':'') + day.dia + '</span><span class="fix-day-city">'+ciudad+'</span></div>';
+    day.partidos.forEach(function(p) {
+      var loc = etToLocal(p.hora, ciudad);
+      html += '<div class="fix-match'+(p.arg?' arg':'')+'"><div><div class="fix-teams">'+(p.arg?'🇦🇷 ':'')+p.eq+'</div><div class="fix-meta">'+p.sede+'</div></div>';
+      if (loc) html += '<div><div class="fix-time">'+loc+'</div><div class="fix-tz">'+tzLabel+'</div></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+renderFixture();
 
 var sw = { vos: true, ivan: true, edu: true };
 window._splitWho = sw;
