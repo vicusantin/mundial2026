@@ -393,6 +393,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="eform-ttl">Cargar gasto</div>
         <input type="text" id="e-desc" placeholder="Descripción (ej: cena en NOLA)"/>
         <input type="number" id="e-monto" placeholder="Monto en USD" min="0" step="0.01" inputmode="decimal"/>
+        <input type="date" id="e-fecha"/>
         <select id="e-quien"><option value="vos">Pagó: Vicky</option><option value="ivan">Pagó: Ivan</option><option value="edu">Pagó: Eduardo</option></select>
         <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Dividir entre:</div>
         <div class="echips">
@@ -918,6 +919,16 @@ onValue(gastosRef, (snapshot) => {
   renderExpenses(exps);
 });
 
+// Pre-populate today's date on load
+(function() {
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth()+1).padStart(2,'0');
+  var dd = String(today.getDate()).padStart(2,'0');
+  var fechaEl = document.getElementById('e-fecha');
+  if (fechaEl) fechaEl.value = yyyy+'-'+mm+'-'+dd;
+})();
+
 window.addExpFirebase = function() {
   const desc = document.getElementById('e-desc').value.trim();
   const monto = parseFloat(document.getElementById('e-monto').value);
@@ -928,9 +939,11 @@ window.addExpFirebase = function() {
     alert('Completá todos los campos');
     return;
   }
-  push(gastosRef, { desc, monto, pag, who });
+  const fecha = document.getElementById('e-fecha').value;
+  push(gastosRef, { desc, monto, pag, who, fecha });
   document.getElementById('e-desc').value = '';
   document.getElementById('e-monto').value = '';
+  document.getElementById('e-fecha').value = '';
 };
 
 window.delExpFirebase = function(key) {
