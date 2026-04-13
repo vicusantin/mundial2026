@@ -16,8 +16,7 @@
   --purple-light:#EEEDFE; --purple:#534AB7;
   --red:#A32D2D;
   --bg:#f2f1ec; --card:#ffffff; --border:#e0ddd6;
-  --text:#1a1a1a; --muted:#777;
-  --nav-h:64px;
+  --text:#1a1a1a; --muted:#777; --nav-h:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
@@ -29,7 +28,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .nav-icon{font-size:20px;line-height:1;}
 .section{display:none;}
 .section.active{display:block;}
-
 /* COUNTDOWN */
 .countdown{background:var(--green-dark);border-radius:16px;padding:16px;margin-bottom:14px;color:white;}
 .cd-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;opacity:.75;margin-bottom:6px;}
@@ -39,17 +37,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .cd-box{flex:1;background:rgba(255,255,255,.15);border-radius:10px;padding:10px 4px;text-align:center;}
 .cd-num{font-size:28px;font-weight:700;line-height:1;}
 .cd-unit{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
-
 /* CARDS */
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .card-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;}
-
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;}
 .stat-label{font-size:11px;color:var(--muted);margin-bottom:4px;line-height:1.3;}
 .stat-val{font-size:20px;font-weight:700;}
-
 /* BADGES */
 .badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;white-space:nowrap;}
 .b-vac{background:var(--blue-light);color:var(--blue);}
@@ -57,7 +52,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .b-holiday{background:var(--green-light);color:var(--green-dark);}
 .b-ok{background:var(--green-light);color:#3B6D11;}
 .b-wip{background:var(--amber-light);color:var(--amber);}
-
 /* DAY ROWS */
 .day-row{display:grid;grid-template-columns:68px 1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #f0ede8;}
 .day-row:last-child{border-bottom:none;}
@@ -65,7 +59,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .day-city{font-size:14px;font-weight:600;}
 .day-note{font-size:12px;color:var(--muted);margin-top:2px;}
 .day-badges{display:flex;flex-direction:column;gap:3px;align-items:flex-end;}
-
 /* TICKETS */
 .ticket{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .ticket-wip{border-color:#EF9F27;}
@@ -75,7 +68,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .ticket-info{font-size:12px;color:var(--muted);margin-top:3px;}
 .ticket-price{font-size:17px;font-weight:700;color:var(--green);white-space:nowrap;text-align:right;}
 .wip-label{font-size:12px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin:14px 0 6px;}
-
 /* ALOJ */
 .aloj{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .aloj-top{display:flex;justify-content:space-between;align-items:flex-start;}
@@ -86,14 +78,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .aloj-sub{font-size:11px;color:var(--muted);text-align:right;margin-top:2px;}
 .aloj-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:13px;color:var(--green);text-decoration:none;border:1px solid var(--green);border-radius:8px;padding:7px 14px;font-weight:500;}
 .aloj-nolink{display:inline-flex;align-items:center;margin-top:10px;font-size:12px;color:var(--muted);border:1px dashed var(--border);border-radius:8px;padding:6px 12px;}
-
 /* CHECK */
 .check-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #f0ede8;font-size:14px;}
 .check-item:last-child{border-bottom:none;}
 .cdot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
 .cdot-ok{background:var(--green-light);color:#3B6D11;}
 .cdot-todo{background:var(--amber-light);color:var(--amber);border:1.5px dashed #EF9F27;}
-
 /* SPLIT TABLE */
 .stbl{width:100%;border-collapse:collapse;font-size:13px;}
 .stbl th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:6px 4px;border-bottom:1px solid var(--border);text-align:right;font-weight:500;}
@@ -101,7 +91,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .stbl td{padding:9px 4px;border-bottom:1px solid #f0ede8;vertical-align:middle;}
 .stbl tr:last-child td{border-bottom:none;}
 .tr{text-align:right;}
-
 /* EXPENSE FORM */
 .eform{background:#f7f6f1;border-radius:12px;padding:14px;margin-bottom:12px;}
 .eform-ttl{font-size:13px;font-weight:500;color:var(--muted);margin-bottom:10px;}
@@ -114,7 +103,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .ce{background:var(--amber-light);color:var(--amber);border-color:var(--amber);}
 .btn-add{width:100%;background:var(--green);color:white;border:none;border-radius:10px;padding:13px;font-size:16px;font-weight:700;cursor:pointer;}
 .btn-add:active{background:var(--green-dark);}
-
 /* EXPENSE ROW */
 .erow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #f0ede8;}
 .erow:last-child{border-bottom:none;}
@@ -122,7 +110,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .emeta{font-size:12px;color:var(--muted);margin-top:2px;}
 .etotal{font-size:15px;font-weight:700;}
 .bdel{background:none;border:none;color:#ccc;font-size:17px;cursor:pointer;padding:0 2px;}
-
 /* BALANCE */
 .brow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0ede8;}
 .brow:last-child{border-bottom:none;}
@@ -315,203 +302,150 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 </div>
 
 <script>
-function nav(id,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sec-'+id).classList.add('active');
+function nav(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
   btn.classList.add('active');
-  document.getElementById('sc').scrollTop=0;
+  document.getElementById('sc').scrollTop = 0;
 }
-function tick(){
-  const t=new Date('2026-06-13T22:40:00-03:00')-new Date();
-  if(t<=0)return;
-  document.getElementById('cd-d').textContent=Math.floor(t/86400000);
-  document.getElementById('cd-h').textContent=String(Math.floor((t%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(Math.floor((t%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(Math.floor((t%60000)/1000)).padStart(2,'0');
-}
-tick();setInterval(tick,1000);
 
-let exps=[],sw={vos:true,ivan:true,edu:true};
-const N={vos:'Vos',ivan:'Ivan',edu:'Eduardo'};
-const AV={vos:'av-v',ivan:'av-i',edu:'av-e'};
-const IN={vos:'VO',ivan:'IV',edu:'ED'};
+// FIX: Countdown usando UTC para compatibilidad con Safari/iOS
+// 2026-06-13 22:40 Argentina (UTC-3) = 2026-06-14 01:40 UTC
+function tick() {
+  var target = Date.UTC(2026, 5, 14, 1, 40, 0); // mes es 0-based: 5 = junio
+  var now = Date.now();
+  var t = target - now;
+  if (t <= 0) {
+    document.getElementById('cd-d').textContent = '0';
+    document.getElementById('cd-h').textContent = '00';
+    document.getElementById('cd-m').textContent = '00';
+    document.getElementById('cd-s').textContent = '00';
+    return;
+  }
+  document.getElementById('cd-d').textContent = Math.floor(t / 86400000);
+  document.getElementById('cd-h').textContent = String(Math.floor((t % 86400000) / 3600000)).padStart(2, '0');
+  document.getElementById('cd-m').textContent = String(Math.floor((t % 3600000) / 60000)).padStart(2, '0');
+  document.getElementById('cd-s').textContent = String(Math.floor((t % 60000) / 1000)).padStart(2, '0');
+}
+tick();
+setInterval(tick, 1000);
 
-function toggleC(w){
-  sw[w]=!sw[w]; window._splitWho=sw;
-  const id=w==='vos'?'c-v':w==='ivan'?'c-i':'c-e';
-  document.getElementById(id).classList.toggle('on',sw[w]);
+var sw = { vos: true, ivan: true, edu: true };
+window._splitWho = sw;
+var N = { vos: 'Vos', ivan: 'Ivan', edu: 'Eduardo' };
+
+function toggleC(w) {
+  sw[w] = !sw[w];
+  window._splitWho = sw;
+  var id = w === 'vos' ? 'c-v' : w === 'ivan' ? 'c-i' : 'c-e';
+  document.getElementById(id).classList.toggle('on', sw[w]);
 }
-function addExp(){
-  const desc=document.getElementById('e-desc').value.trim();
-  const monto=parseFloat(document.getElementById('e-monto').value);
-  const pag=document.getElementById('e-quien').value;
-  const who=Object.keys(sw).filter(k=>sw[k]);
-  if(!desc||isNaN(monto)||monto<=0||!who.length){alert('Completá todos los campos');return;}
-  exps.push({desc,monto,pag,who});
-  document.getElementById('e-desc').value='';
-  document.getElementById('e-monto').value='';
-  // firebase handles rendering
-}
-function delExp(i){exps.splice(i,1);// firebase handles rendering}
-function render(){
-  const list=document.getElementById('exp-list');
-  if(!exps.length){
-    list.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:16px 0;">Sin gastos cargados aún</div>';
-    document.getElementById('stat-v').textContent='$0';
-    renderBal();return;
-  }
-  let tot=0;
-  list.innerHTML=exps.map((e,i)=>{
-    tot+=e.monto;
-    const sh=e.monto/e.who.length;
-    const pts=e.who.map(p=>`${N[p]}: $${sh.toFixed(2)}`).join(' · ');
-    return `<div class="erow"><div><div class="edesc">${e.desc}</div><div class="emeta">Pagó ${N[e.pag]} · ${pts}</div></div><div style="text-align:right;"><div class="etotal">$${e.monto.toFixed(2)}</div><button class="bdel" onclick="delExp(${i})">✕</button></div></div>`;
-  }).join('');
-  document.getElementById('stat-v').textContent='$'+tot.toFixed(2);
-  renderBal();
-}
-function renderBal(){
-  const bal={vos:0,ivan:0,edu:0};
-  exps.forEach(e=>{
-    bal[e.pag]+=e.monto;
-    const sh=e.monto/e.who.length;
-    e.who.forEach(p=>{bal[p]-=sh;});
-  });
-  const bc=document.getElementById('bal-content');
-  if(!exps.length){bc.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:12px 0;">Cargá gastos para ver el balance</div>';return;}
-  let html=['vos','ivan','edu'].map(p=>{
-    const b=bal[p];
-    const str=b>=0?'+$'+b.toFixed(2):'-$'+Math.abs(b).toFixed(2);
-    const cls=b>0.01?'bpos':b<-0.01?'bneg':'bzero';
-    const lbl=b>0.01?'le deben':b<-0.01?'debe':'al día';
-    return `<div class="brow"><div class="bperson"><div class="av ${AV[p]}">${IN[p]}</div><div class="bname">${N[p]}</div></div><div><div class="bamount ${cls}">${str}</div><div class="blabel">${lbl}</div></div></div>`;
-  }).join('');
-  let d=['vos','ivan','edu'].filter(p=>bal[p]<-0.01).map(p=>({p,b:bal[p]}));
-  let c=['vos','ivan','edu'].filter(p=>bal[p]>0.01).map(p=>({p,b:bal[p]}));
-  let s=[];
-  while(d.length&&c.length){
-    const a=Math.min(Math.abs(d[0].b),c[0].b);
-    if(a>0.01)s.push(`${N[d[0].p]} le paga <strong>$${a.toFixed(2)}</strong> a ${N[c[0].p]}`);
-    d[0].b+=a;c[0].b-=a;
-    if(Math.abs(d[0].b)<0.01)d.shift();
-    if(Math.abs(c[0].b)<0.01)c.shift();
-  }
-  if(s.length)html+=`<div class="sbox"><div class="stitle">Cómo saldar</div>${s.map(x=>`<div class="sitem">${x}</div>`).join('')}</div>`;
-  bc.innerHTML=html;
-}
-// firebase handles rendering
 </script>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAzkkc-Eu9-S6Ygyh2KtzN7wLs_fAUvnlI",
-      authDomain: "mundial2026-3e851.firebaseapp.com",
-      databaseURL: "https://mundial2026-3e851-default-rtdb.firebaseio.com",
-      projectId: "mundial2026-3e851",
-      storageBucket: "mundial2026-3e851.firebasestorage.app",
-      messagingSenderId: "179338374035",
-      appId: "1:179338374035:web:390d7cb93326c47c719666"
-    };
+const firebaseConfig = {
+  apiKey: "AIzaSyAzkkc-Eu9-S6Ygyh2KtzN7wLs_fAUvnlI",
+  authDomain: "mundial2026-3e851.firebaseapp.com",
+  databaseURL: "https://mundial2026-3e851-default-rtdb.firebaseio.com",
+  projectId: "mundial2026-3e851",
+  storageBucket: "mundial2026-3e851.firebasestorage.app",
+  messagingSenderId: "179338374035",
+  appId: "1:179338374035:web:390d7cb93326c47c719666"
+};
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const gastosRef = ref(db, 'gastos');
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const gastosRef = ref(db, 'gastos');
+const names = { vos: 'Vos', ivan: 'Ivan', edu: 'Eduardo' };
+const avClass = { vos: 'av-v', ivan: 'av-i', edu: 'av-e' };
+const initials = { vos: 'VO', ivan: 'IV', edu: 'ED' };
 
-    const names = { vos: 'Vos', ivan: 'Ivan', edu: 'Eduardo' };
-    const tagClass = { vos: 'tag-vos', ivan: 'tag-ivan', edu: 'tag-edu' };
-    const avClass = { vos: 'av-v', ivan: 'av-i', edu: 'av-e' };
-    const initials = { vos: 'VO', ivan: 'IV', edu: 'ED' };
+onValue(gastosRef, (snapshot) => {
+  const data = snapshot.val();
+  const exps = data ? Object.entries(data).map(([key, val]) => ({ key, ...val })) : [];
+  renderExpenses(exps);
+});
 
-    // Listen for real-time changes
-    onValue(gastosRef, (snapshot) => {
-      const data = snapshot.val();
-      const exps = data ? Object.entries(data).map(([key, val]) => ({ key, ...val })) : [];
-      renderExpenses(exps);
-    });
+window.addExpFirebase = function() {
+  const desc = document.getElementById('e-desc').value.trim();
+  const monto = parseFloat(document.getElementById('e-monto').value);
+  const pag = document.getElementById('e-quien').value;
+  const sw = window._splitWho || { vos: true, ivan: true, edu: true };
+  const who = Object.keys(sw).filter(k => sw[k]);
+  if (!desc || isNaN(monto) || monto <= 0 || !who.length) {
+    alert('Completá todos los campos');
+    return;
+  }
+  push(gastosRef, { desc, monto, pag, who });
+  document.getElementById('e-desc').value = '';
+  document.getElementById('e-monto').value = '';
+};
 
-    // Add expense
-    window.addExpFirebase = function() {
-      const desc = document.getElementById('e-desc').value.trim();
-      const monto = parseFloat(document.getElementById('e-monto').value);
-      const pag = document.getElementById('e-quien').value;
-      const sw = window._splitWho || { vos: true, ivan: true, edu: true };
-      const who = Object.keys(sw).filter(k => sw[k]);
-      if (!desc || isNaN(monto) || monto <= 0 || !who.length) { alert('Completá todos los campos'); return; }
-      push(gastosRef, { desc, monto, pag, who });
-      document.getElementById('e-desc').value = '';
-      document.getElementById('e-monto').value = '';
-    };
+window.delExpFirebase = function(key) {
+  remove(ref(db, 'gastos/' + key));
+};
 
-    // Delete expense
-    window.delExpFirebase = function(key) {
-      remove(ref(db, 'gastos/' + key));
-    };
+function renderExpenses(exps) {
+  const list = document.getElementById('exp-list');
+  const statV = document.getElementById('stat-v');
+  if (!list) return;
+  if (!exps.length) {
+    list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:16px 0;">Sin gastos cargados aún</div>';
+    if (statV) statV.textContent = '$0';
+    renderBalance([]);
+    return;
+  }
+  let tot = 0;
+  list.innerHTML = exps.map((e) => {
+    tot += e.monto;
+    const sh = e.monto / e.who.length;
+    const pts = e.who.map(p => `${names[p]}: $${sh.toFixed(2)}`).join(' · ');
+    return `<div class="erow">
+      <div><div class="edesc">${e.desc}</div><div class="emeta">Pagó ${names[e.pag]} · ${pts}</div></div>
+      <div style="text-align:right;"><div class="etotal">$${e.monto.toFixed(2)}</div><button class="bdel" onclick="delExpFirebase('${e.key}')">✕</button></div>
+    </div>`;
+  }).join('');
+  if (statV) statV.textContent = '$' + tot.toFixed(2);
+  renderBalance(exps);
+}
 
-    function renderExpenses(exps) {
-      const list = document.getElementById('exp-list');
-      const statV = document.getElementById('stat-v');
-      if (!list) return;
-
-      if (!exps.length) {
-        list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:16px 0;">Sin gastos cargados aún</div>';
-        if (statV) statV.textContent = '$0';
-        renderBalance([]);
-        return;
-      }
-
-      let tot = 0;
-      list.innerHTML = exps.map((e) => {
-        tot += e.monto;
-        const sh = e.monto / e.who.length;
-        const pts = e.who.map(p => `${names[p]}: $${sh.toFixed(2)}`).join(' · ');
-        return `<div class="erow">
-          <div><div class="edesc">${e.desc}</div><div class="emeta">Pagó ${names[e.pag]} · ${pts}</div></div>
-          <div style="text-align:right;"><div class="etotal">$${e.monto.toFixed(2)}</div><button class="bdel" onclick="delExpFirebase('${e.key}')">✕</button></div>
-        </div>`;
-      }).join('');
-
-      if (statV) statV.textContent = '$' + tot.toFixed(2);
-      renderBalance(exps);
-    }
-
-    function renderBalance(exps) {
-      const bal = { vos: 0, ivan: 0, edu: 0 };
-      exps.forEach(e => {
-        bal[e.pag] += e.monto;
-        const sh = e.monto / e.who.length;
-        e.who.forEach(p => { bal[p] -= sh; });
-      });
-      const bc = document.getElementById('bal-content');
-      if (!bc) return;
-      if (!exps.length) {
-        bc.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:12px 0;">Cargá gastos para ver el balance</div>';
-        return;
-      }
-      let html = ['vos','ivan','edu'].map(p => {
-        const b = bal[p];
-        const str = b >= 0 ? '+$'+b.toFixed(2) : '-$'+Math.abs(b).toFixed(2);
-        const cls = b > 0.01 ? 'bpos' : b < -0.01 ? 'bneg' : 'bzero';
-        const lbl = b > 0.01 ? 'le deben' : b < -0.01 ? 'debe' : 'al día';
-        return `<div class="brow"><div class="bperson"><div class="av ${avClass[p]}">${initials[p]}</div><div class="bname">${names[p]}</div></div><div><div class="bamount ${cls}">${str}</div><div class="blabel">${lbl}</div></div></div>`;
-      }).join('');
-      let d = ['vos','ivan','edu'].filter(p=>bal[p]<-0.01).map(p=>({p,b:bal[p]}));
-      let c = ['vos','ivan','edu'].filter(p=>bal[p]>0.01).map(p=>({p,b:bal[p]}));
-      let s = [];
-      while(d.length&&c.length){
-        const a=Math.min(Math.abs(d[0].b),c[0].b);
-        if(a>0.01) s.push(`${names[d[0].p]} le paga <strong>$${a.toFixed(2)}</strong> a ${names[c[0].p]}`);
-        d[0].b+=a; c[0].b-=a;
-        if(Math.abs(d[0].b)<0.01)d.shift();
-        if(Math.abs(c[0].b)<0.01)c.shift();
-      }
-      if(s.length) html+=`<div class="sbox"><div class="stitle">Cómo saldar</div>${s.map(x=>`<div class="sitem">${x}</div>`).join('')}</div>`;
-      bc.innerHTML = html;
-    }
-  </script>
-
+function renderBalance(exps) {
+  const bal = { vos: 0, ivan: 0, edu: 0 };
+  exps.forEach(e => {
+    bal[e.pag] += e.monto;
+    const sh = e.monto / e.who.length;
+    e.who.forEach(p => { bal[p] -= sh; });
+  });
+  const bc = document.getElementById('bal-content');
+  if (!bc) return;
+  if (!exps.length) {
+    bc.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:12px 0;">Cargá gastos para ver el balance</div>';
+    return;
+  }
+  let html = ['vos','ivan','edu'].map(p => {
+    const b = bal[p];
+    const str = b >= 0 ? '+$' + b.toFixed(2) : '-$' + Math.abs(b).toFixed(2);
+    const cls = b > 0.01 ? 'bpos' : b < -0.01 ? 'bneg' : 'bzero';
+    const lbl = b > 0.01 ? 'le deben' : b < -0.01 ? 'debe' : 'al día';
+    return `<div class="brow"><div class="bperson"><div class="av ${avClass[p]}">${initials[p]}</div><div class="bname">${names[p]}</div></div><div><div class="bamount ${cls}">${str}</div><div class="blabel">${lbl}</div></div></div>`;
+  }).join('');
+  let d = ['vos','ivan','edu'].filter(p => bal[p] < -0.01).map(p => ({ p, b: bal[p] }));
+  let c = ['vos','ivan','edu'].filter(p => bal[p] > 0.01).map(p => ({ p, b: bal[p] }));
+  let s = [];
+  while (d.length && c.length) {
+    const a = Math.min(Math.abs(d[0].b), c[0].b);
+    if (a > 0.01) s.push(`${names[d[0].p]} le paga <strong>$${a.toFixed(2)}</strong> a ${names[c[0].p]}`);
+    d[0].b += a; c[0].b -= a;
+    if (Math.abs(d[0].b) < 0.01) d.shift();
+    if (Math.abs(c[0].b) < 0.01) c.shift();
+  }
+  if (s.length) html += `<div class="sbox"><div class="stitle">Cómo saldar</div>${s.map(x => `<div class="sitem">${x}</div>`).join('')}</div>`;
+  bc.innerHTML = html;
+}
+</script>
 </body>
 </html>
