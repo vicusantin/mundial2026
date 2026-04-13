@@ -191,17 +191,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
       </div>
 
-      <!-- Preview Itinerario -->
-      <div class="home-card" onclick="navTo('itinerario')">
-        <div class="home-card-header">
-          <span class="home-card-title">🗓️ Próximas paradas</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
-        <div class="day-row" style="padding:8px 0;"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row" style="padding:8px 0;"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row" style="padding:8px 0;border-bottom:none;"><span class="day-date">Mar 16/6</span><div><div class="day-city">Kansas City</div><div class="day-note">ARG-ALG 21hs</div></div><div class="day-badges"><span class="badge b-work">trabajan</span><span class="badge b-ok">✓ entrada</span></div></div>
-      </div>
-
       <!-- Preview Entradas -->
       <div class="home-card" onclick="navTo('entradas')">
         <div class="home-card-header">
@@ -245,12 +234,31 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         </div>
       </div>
 
-      <!-- FIXTURE -->
-      <div style="margin-bottom:14px;">
-        <div class="page-title" style="font-size:17px;margin-bottom:2px;">Fixture del Mundial 🌍</div>
-        <div style="font-size:12px;color:var(--muted);">Horarios locales según ciudad del viaje</div>
+      <!-- PREVIEW ITINERARIO DINÁMICO -->
+      <div class="home-card" onclick="navTo('itinerario')">
+        <div class="home-card-header">
+          <span class="home-card-title">🗓️ Próximas paradas</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div id="preview-itinerario"></div>
       </div>
 
+      <!-- PREVIEW FIXTURE DINÁMICO -->
+      <div class="home-card" onclick="navTo('fixture')">
+        <div class="home-card-header">
+          <span class="home-card-title">🌍 Próximos partidos</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div id="preview-fixture"></div>
+      </div>
+    </div>
+
+    <!-- FIXTURE COMPLETO -->
+    <div id="sec-fixture" class="section">
+      <div class="page-header">
+        <div class="page-title">Fixture del Mundial 🌍</div>
+        <div class="page-sub">Horarios locales según ciudad del viaje</div>
+      </div>
       <div id="fixture-list"></div>
     </div>
 
@@ -429,7 +437,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 
   <nav class="bottom-nav">
     <button class="nav-item" onclick="nav('itinerario',this)"><span class="nav-icon">🗓️</span><span>Itinerario</span></button>
-    <button class="nav-item" onclick="nav('alojamiento',this)"><span class="nav-icon">🛏️</span><span>Alojamiento</span></button>
+    <button class="nav-item" onclick="nav('fixture',this)"><span class="nav-icon">⚽</span><span>Fixture</span></button>
     <button class="nav-item active" onclick="nav('home',this)"><span class="nav-icon">🏠</span><span>Resumen</span></button>
     <button class="nav-item" onclick="nav('gastos',this)"><span class="nav-icon">💰</span><span>Gastos</span></button>
     <button class="nav-item" onclick="nav('pendientes',this)"><span class="nav-icon">📋</span><span>Pendientes</span></button>
@@ -730,28 +738,116 @@ var FIXTURE = [
   {dia:'10/7',partidos:[{eq:'Cuartos de final',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
   {dia:'11/7',partidos:[{eq:'Cuartos de final',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Cuartos de final',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:false}]}
 ];
-function renderFixture() {
-  var el = document.getElementById('fixture-list');
-  if (!el) return;
-  var html = '';
-  FIXTURE.forEach(function(day) {
-    var ciudad = CIUDAD_POR_DIA[day.dia] || '';
-    var hasArg = day.partidos.some(function(p){return p.arg;});
-    var isCT = CT_CITIES.indexOf(ciudad) >= 0;
-    var tzLabel = isCT ? 'CT' : 'ET';
-    html += '<div class="fix-day">';
-    html += '<div class="fix-day-header"><span class="fix-day-date">' + (hasArg?'🇦🇷 ':'') + day.dia + '</span><span class="fix-day-city">'+ciudad+'</span></div>';
-    day.partidos.forEach(function(p) {
-      var loc = etToLocal(p.hora, ciudad);
-      html += '<div class="fix-match'+(p.arg?' arg':'')+'"><div><div class="fix-teams">'+(p.arg?'🇦🇷 ':'')+p.eq+'</div><div class="fix-meta">'+p.sede+'</div></div>';
-      if (loc) html += '<div><div class="fix-time">'+loc+'</div><div class="fix-tz">'+tzLabel+'</div></div>';
-      html += '</div>';
-    });
+// Convierte "13/6" -> Date object (año 2026)
+function diaToDate(dia) {
+  var p = dia.split('/');
+  return new Date(2026, parseInt(p[1])-1, parseInt(p[0]));
+}
+// Fecha de hoy normalizada a medianoche
+function today() {
+  var d = new Date();
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+function renderDayCard(day, ciudad, isLast) {
+  var isCT = CT_CITIES.indexOf(ciudad) >= 0;
+  var tzLabel = isCT ? 'CT' : 'ET';
+  var hasArg = day.partidos.some(function(p){return p.arg;});
+  var html = '<div class="fix-day">';
+  html += '<div class="fix-day-header"><span class="fix-day-date">'+(hasArg?'🇦🇷 ':'')+day.dia+'</span><span class="fix-day-city">'+ciudad+'</span></div>';
+  day.partidos.forEach(function(p) {
+    var loc = etToLocal(p.hora, ciudad);
+    html += '<div class="fix-match'+(p.arg?' arg':'')+'"><div><div class="fix-teams">'+(p.arg?'🇦🇷 ':'')+p.eq+'</div><div class="fix-meta">'+p.sede+'</div></div>';
+    if (loc) html += '<div><div class="fix-time">'+loc+'</div><div class="fix-tz">'+tzLabel+'</div></div>';
     html += '</div>';
   });
-  el.innerHTML = html;
+  html += '</div>';
+  return html;
+}
+
+function renderFixture() {
+  // Sección completa
+  var el = document.getElementById('fixture-list');
+  if (el) {
+    var html = '';
+    FIXTURE.forEach(function(day) {
+      html += renderDayCard(day, CIUDAD_POR_DIA[day.dia] || '', false);
+    });
+    el.innerHTML = html;
+  }
+
+  // Preview dinámico: próximos 3 días con partidos desde hoy
+  var pf = document.getElementById('preview-fixture');
+  if (pf) {
+    var t = today();
+    var proximos = FIXTURE.filter(function(day) {
+      return diaToDate(day.dia) >= t;
+    }).slice(0, 3);
+    if (proximos.length === 0) {
+      pf.innerHTML = '<div style="font-size:13px;color:var(--muted);padding:8px 0;">El Mundial ya terminó 🏆</div>';
+    } else {
+      pf.innerHTML = proximos.map(function(day) {
+        return renderDayCard(day, CIUDAD_POR_DIA[day.dia] || '', false);
+      }).join('');
+    }
+  }
 }
 renderFixture();
+
+// Preview dinámico del itinerario: próximos 3 días del viaje desde hoy
+var ITINERARIO_DIAS = [
+  {dia:'13/6',fecha:'Sáb 13/6',ciudad:'Buenos Aires',nota:'Salida EZE 22:40hs',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'14/6',fecha:'Dom 14/6',ciudad:'Miami → Kansas',nota:'Llegada 7hs, vuelo 13hs',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'15/6',fecha:'Lun 15/6',ciudad:'Kansas City',nota:'Feriado',badges:[{cls:'b-holiday',txt:'feriado'}]},
+  {dia:'16/6',fecha:'Mar 16/6',ciudad:'Kansas City',nota:'ARG-ALG 21hs',badges:[{cls:'b-work',txt:'trabajan'},{cls:'b-ok',txt:'✓ entrada'}]},
+  {dia:'17/6',fecha:'Mié 17/6',ciudad:'Kansas → Chicago',nota:'Traslado en auto',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'18/6',fecha:'Jue 18/6',ciudad:'Chicago',nota:"Green Mill, Buddy Guy's",badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'19/6',fecha:'Vie 19/6',ciudad:'Chicago',nota:'—',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'20/6',fecha:'Sáb 20/6',ciudad:'Chicago',nota:'—',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'21/6',fecha:'Dom 21/6',ciudad:'Chicago → Dallas',nota:'Salida MDW 20:55',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'22/6',fecha:'Lun 22/6',ciudad:'Dallas',nota:'ARG-AUT 13hs',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-wip',txt:'WIP'}]},
+  {dia:'23/6',fecha:'Mar 23/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'24/6',fecha:'Mié 24/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'25/6',fecha:'Jue 25/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'26/6',fecha:'Vie 26/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'27/6',fecha:'Sáb 27/6',ciudad:'Dallas',nota:'ARG-JOR 22hs',badges:[{cls:'b-vac',txt:'fin de semana'},{cls:'b-ok',txt:'✓ entrada'}]},
+  {dia:'28/6',fecha:'Dom 28/6',ciudad:'→ New Orleans',nota:'Roadtrip Dallas–Lafayette–NOLA',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'29/6',fecha:'Lun 29/6',ciudad:'New Orleans',nota:'—',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'30/6',fecha:'Mar 30/6',ciudad:'New Orleans',nota:'Preservation Hall (jazz)',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'1/7',fecha:'Mié 1/7',ciudad:'Pto. intermedio',nota:'Roadtrip NOLA–Pensacola–Tallahasse',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'2/7',fecha:'Jue 2/7',ciudad:'→ Miami',nota:'Roadtrip Tallahasse–Miami',badges:[{cls:'b-vac',txt:'vacaciones'}]},
+  {dia:'3/7',fecha:'Vie 3/7',ciudad:'Miami',nota:'Posible 16avos 18hs',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-wip',txt:'WIP'}]},
+  {dia:'4/7',fecha:'Sáb 4/7',ciudad:'Miami',nota:'—',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'5/7',fecha:'Dom 5/7',ciudad:'→ Atlanta',nota:'Traslado Miami–Atlanta',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'6/7',fecha:'Lun 6/7',ciudad:'Atlanta',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'7/7',fecha:'Mar 7/7',ciudad:'Atlanta',nota:'Posibles 8vos de final',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-ok',txt:'✓ entrada'}]},
+  {dia:'8/7',fecha:'Mié 8/7',ciudad:'Atlanta',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
+  {dia:'9/7',fecha:'Jue 9/7',ciudad:'→ Miami',nota:'Vuelo Atlanta–Miami',badges:[{cls:'b-holiday',txt:'feriado 9/7'}]},
+  {dia:'10/7',fecha:'Vie 10/7',ciudad:'Miami',nota:'—',badges:[{cls:'b-holiday',txt:'feriado'}]},
+  {dia:'11/7',fecha:'Sáb 11/7',ciudad:'Miami',nota:'Salida MIA 23:55',badges:[{cls:'b-vac',txt:'fin de semana'}]}
+];
+function renderPreviewItinerario() {
+  var el = document.getElementById('preview-itinerario');
+  if (!el) return;
+  var t = today();
+  var proximos = ITINERARIO_DIAS.filter(function(d) {
+    return diaToDate(d.dia) >= t;
+  }).slice(0, 3);
+  if (proximos.length === 0) {
+    el.innerHTML = '<div style="font-size:13px;color:var(--muted);padding:8px 0;">El viaje terminó 🏠</div>';
+    return;
+  }
+  el.innerHTML = proximos.map(function(d, i) {
+    var isLast = i === proximos.length - 1;
+    var badges = d.badges.map(function(b){ return '<span class="badge '+b.cls+'">'+b.txt+'</span>'; }).join('');
+    return '<div class="day-row" style="padding:8px 0;'+(isLast?'border-bottom:none;':'')+'">'
+      +'<span class="day-date">'+d.fecha+'</span>'
+      +'<div><div class="day-city">'+d.ciudad+'</div><div class="day-note">'+d.nota+'</div></div>'
+      +'<div class="day-badges">'+badges+'</div>'
+      +'</div>';
+  }).join('');
+}
+renderPreviewItinerario();
 
 var sw = { vos: true, ivan: true, edu: true };
 window._splitWho = sw;
