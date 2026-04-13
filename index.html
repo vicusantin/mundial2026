@@ -52,6 +52,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 /* BADGES */
 .badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;white-space:nowrap;}
 .b-vac{background:var(--blue-light);color:var(--blue);}
+.b-weekend{background:#f0f0ee;color:#888;}
 .b-work{background:#FAECE7;color:#993C1D;}
 .b-holiday{background:var(--green-light);color:var(--green-dark);}
 .b-ok{background:var(--green-light);color:#3B6D11;}
@@ -274,9 +275,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
       </div>
       <div class="card">
         <div class="card-title">Itinerario completo</div>
-        <div class="day-row" onclick="toggleSug(this,'13/6')"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'13/6')"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'14/6')"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'14/6')"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'15/6')"><span class="day-date">Lun 15/6</span><div><div class="day-city">Kansas</div><div class="day-note">Feriado</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
         <div class="day-suggestions"></div>
@@ -288,9 +289,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'19/6')"><span class="day-date">Vie 19/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'20/6')"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'20/6')"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'21/6')"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'21/6')"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'22/6')"><span class="day-date">Lun 22/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-AUT 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
         <div class="day-suggestions"></div>
@@ -302,9 +303,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'26/6')"><span class="day-date">Vie 26/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'27/6')"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span><span class="badge b-ok">✓ entrada</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'27/6')"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span><span class="badge b-ok">✓ entrada</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'28/6')"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'28/6')"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'29/6')"><span class="day-date">Lun 29/6</span><div><div class="day-city">New Orleans</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-suggestions"></div>
@@ -316,9 +317,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'3/7')"><span class="day-date">Vie 3/7</span><div><div class="day-city">Miami</div><div class="day-note">Posible 16avos 18hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'4/7')"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'4/7')"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'5/7')"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'5/7')"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'6/7')"><span class="day-date">Lun 6/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-suggestions"></div>
@@ -330,7 +331,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="day-suggestions"></div>
         <div class="day-row" onclick="toggleSug(this,'10/7')"><span class="day-date">Vie 10/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
         <div class="day-suggestions"></div>
-        <div class="day-row" onclick="toggleSug(this,'11/7')"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'11/7')"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-weekend">fin de semana</span></div></div>
         <div class="day-suggestions"></div>
       </div>
     </div>
