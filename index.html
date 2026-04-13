@@ -685,17 +685,19 @@ function toggleSug(row, dia) {
 
 // ─── FIXTURE DEL MUNDIAL ───────────────────────────────────────────────
 var CIUDAD_POR_DIA = {
+  '11/6':'—','12/6':'—',
   '13/6':'Buenos Aires','14/6':'Miami','15/6':'Kansas City','16/6':'Kansas City',
   '17/6':'Chicago','18/6':'Chicago','19/6':'Chicago','20/6':'Chicago','21/6':'Chicago',
   '22/6':'Dallas','23/6':'Dallas','24/6':'Dallas','25/6':'Dallas','26/6':'Dallas','27/6':'Dallas',
   '28/6':'New Orleans','29/6':'New Orleans','30/6':'New Orleans',
   '1/7':'Pensacola','2/7':'Miami','3/7':'Miami','4/7':'Miami','5/7':'Miami',
   '6/7':'Atlanta','7/7':'Atlanta','8/7':'Atlanta',
-  '9/7':'Miami','10/7':'Miami','11/7':'Miami'
+  '9/7':'Miami','10/7':'Miami','11/7':'Miami',
+  '12/7':'—','14/7':'—','15/7':'—','18/7':'—','19/7':'—'
 };
 var CT_CITIES = ['Kansas City','Chicago','Dallas','New Orleans','Pensacola'];
 function etToLocal(etStr, ciudad) {
-  if (ciudad === 'Buenos Aires') return etStr.replace(/:00 /,'hs ').replace('AM','AM').replace('PM','PM');
+  if (ciudad === 'Buenos Aires' || ciudad === '—') return etStr;
   var isCT = CT_CITIES.indexOf(ciudad) >= 0;
   var m = etStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
   if (!m) return etStr;
@@ -709,6 +711,14 @@ function etToLocal(etStr, ciudad) {
   return h12 + ':' + min + ' ' + suffix;
 }
 var FIXTURE = [
+  {dia:'11/6',partidos:[
+    {eq:'Mexico vs Sudafrica',hora:'3:00 PM',sede:'Azteca, Mexico City',arg:false},
+    {eq:'Corea del Sur vs Chequia',hora:'10:00 PM',sede:'Akron, Zapopan',arg:false}
+  ]},
+  {dia:'12/6',partidos:[
+    {eq:'Canada vs Bosnia',hora:'3:00 PM',sede:'BMO, Toronto',arg:false},
+    {eq:'USA vs Paraguay',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}
+  ]},
   {dia:'13/6',partidos:[{eq:'Brasil vs Marruecos',hora:'6:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Haiti vs Escocia',hora:'9:00 PM',sede:'Gillette, Boston',arg:false}]},
   {dia:'14/6',partidos:[{eq:'Alemania vs Curazao',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Paises Bajos vs Japon',hora:'4:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Costa de Marfil vs Ecuador',hora:'7:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Suecia vs Tunez',hora:'10:00 PM',sede:'BBVA, Monterrey',arg:false}]},
   {dia:'15/6',partidos:[{eq:'Espana vs Cabo Verde',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Belgica vs Egipto',hora:'3:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Arabia Saudita vs Uruguay',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Iran vs Nueva Zelanda',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
@@ -736,7 +746,22 @@ var FIXTURE = [
   {dia:'7/7',partidos:[{eq:'Octavos (posible ARG)',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:true},{eq:'Octavos de final',hora:'4:00 PM',sede:'BC Place, Vancouver',arg:false}]},
   {dia:'9/7',partidos:[{eq:'Cuartos de final',hora:'4:00 PM',sede:'Gillette, Boston',arg:false}]},
   {dia:'10/7',partidos:[{eq:'Cuartos de final',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
-  {dia:'11/7',partidos:[{eq:'Cuartos de final',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Cuartos de final',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:false}]}
+  {dia:'11/7',partidos:[{eq:'Cuartos de final',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Cuartos de final',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:false}]},
+  {dia:'12/7',partidos:[
+    {eq:'Cuartos de final',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}
+  ]},
+  {dia:'14/7',partidos:[
+    {eq:'Semifinal',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}
+  ]},
+  {dia:'15/7',partidos:[
+    {eq:'Semifinal',hora:'3:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false}
+  ]},
+  {dia:'18/7',partidos:[
+    {eq:'Tercer puesto',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false}
+  ]},
+  {dia:'19/7',partidos:[
+    {eq:'FINAL del Mundial 🏆',hora:'3:00 PM',sede:'MetLife, Nueva York/NJ',arg:false}
+  ]}
 ];
 // Convierte "13/6" -> Date object (año 2026)
 function diaToDate(dia) {
