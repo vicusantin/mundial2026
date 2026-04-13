@@ -127,7 +127,14 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .sbox{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
 .stitle{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
 .sitem{font-size:14px;padding:4px 0;line-height:1.5;}
-.sub-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px;}
+.home-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.home-card:active{background:#f5f4ef;}
+.home-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.home-card-title{font-size:14px;font-weight:700;}
+.home-card-link{font-size:12px;color:var(--green);font-weight:600;}
+.home-gasto-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:4px 0;border-bottom:1px solid #f0ede8;}
+.home-gasto-row:last-child{border-bottom:none;}
+
 .page-header{margin-bottom:14px;}
 .page-title{font-size:22px;font-weight:800;}
 .page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
@@ -137,54 +144,117 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 <div class="shell">
   <div class="content" id="sc">
 
-    <!-- ITINERARIO -->
-    <div id="sec-itinerario" class="section active">
+    <!-- HOME -->
+    <div id="sec-home" class="section active">
       <div class="countdown">
         <div class="cd-label">Faltan para el viaje</div>
         <div class="cd-title">Buenos Aires → Miami ✈️</div>
         <div class="cd-sub">Sábado 13 de junio · EZE 22:40hs</div>
         <div class="cd-boxes">
-          <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-unit">días</div></div>
-          <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-unit">horas</div></div>
-          <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-unit">min</div></div>
-          <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-unit">seg</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-d2">--</div><div class="cd-unit">días</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-h2">--</div><div class="cd-unit">horas</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-m2">--</div><div class="cd-unit">min</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-s2">--</div><div class="cd-unit">seg</div></div>
         </div>
       </div>
+
       <div class="page-header">
-        <div class="page-title">Mundial 2026 🏆</div>
-        <div class="page-sub">Ivan, Eduardo & vos · 13 jun – 11 jul</div>
+        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
+        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
+      </div>
+
+      <!-- Preview Itinerario -->
+      <div class="home-card" onclick="navTo('itinerario')">
+        <div class="home-card-header">
+          <span class="home-card-title">🗓️ Próximas paradas</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div class="day-row" style="padding:8px 0;"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row" style="padding:8px 0;"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row" style="padding:8px 0;border-bottom:none;"><span class="day-date">Mar 16/6</span><div><div class="day-city">Kansas City</div><div class="day-note">ARG-ALG 21hs</div></div><div class="day-badges"><span class="badge b-work">trabajan</span><span class="badge b-ok">✓ entrada</span></div></div>
+      </div>
+
+      <!-- Preview Entradas -->
+      <div class="home-card" onclick="navTo('entradas')">
+        <div class="home-card-header">
+          <span class="home-card-title">🎟️ Entradas</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <div style="flex:1;background:var(--green-light);border-radius:10px;padding:10px;text-align:center;">
+            <div style="font-size:22px;font-weight:800;color:var(--green-dark);">3</div>
+            <div style="font-size:11px;color:var(--green-dark);font-weight:600;">confirmadas</div>
+          </div>
+          <div style="flex:1;background:var(--amber-light);border-radius:10px;padding:10px;text-align:center;">
+            <div style="font-size:22px;font-weight:800;color:var(--amber);">2</div>
+            <div style="font-size:11px;color:var(--amber);font-weight:600;">pendientes</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px;">
+          <div>✓ ARG vs Argelia · 16/6 Kansas City</div>
+          <div>✓ ARG vs Jordania · 27/6 Dallas</div>
+          <div>✓ 8vos de final · 7/7 Atlanta</div>
+          <div style="color:var(--amber);">⏳ ARG vs Austria · 22/6 Dallas</div>
+          <div style="color:var(--amber);">⏳ 16avos de final · 3/7 Miami</div>
+        </div>
+      </div>
+
+      <!-- Preview Gastos a pagar -->
+      <div class="home-card" onclick="navTo('gastos')">
+        <div class="home-card-header">
+          <span class="home-card-title">💰 Gastos a pagar</span>
+          <span class="home-card-link">Ver todo →</span>
+        </div>
+        <div style="margin-top:6px;display:flex;flex-direction:column;gap:6px;">
+          <div class="home-gasto-row"><span>Aloj. Dallas</span><span style="color:var(--amber);font-weight:700;">$1.912 · vence 8/6</span></div>
+          <div class="home-gasto-row"><span>Aloj. Chicago (resto)</span><span style="color:var(--amber);font-weight:700;">$654 · vence 2/6</span></div>
+          <div class="home-gasto-row"><span>Aloj. Miami</span><span style="color:var(--amber);font-weight:700;">$1.103 · vence 23/6</span></div>
+          <div class="home-gasto-row"><span>Aloj. Atlanta</span><span style="color:var(--amber);font-weight:700;">$1.382 · vence 26/6</span></div>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:12px;color:var(--muted);">Total por pagar</span>
+          <span style="font-size:17px;font-weight:800;color:var(--amber);">$4.844</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITINERARIO -->
+    <div id="sec-itinerario" class="section">
+      <div class="page-header">
+        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
+        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
       </div>
       <div class="card">
         <div class="card-title">Itinerario completo</div>
-        <div class="day-row"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
         <div class="day-row"><span class="day-date">Lun 15/6</span><div><div class="day-city">Kansas</div><div class="day-note">Feriado</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
         <div class="day-row"><span class="day-date">Mar 16/6</span><div><div class="day-city">Kansas City</div><div class="day-note">ARG-ALG 21hs</div></div><div class="day-badges"><span class="badge b-work">trabajan</span><span class="badge b-ok">✓ entrada</span></div></div>
         <div class="day-row"><span class="day-date">Mié 17/6</span><div><div class="day-city">Kansas → Chicago</div><div class="day-note">Traslado en auto</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Jue 18/6</span><div><div class="day-city">Chicago</div><div class="day-note">Green Mill, Buddy Guy's</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Vie 19/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
         <div class="day-row"><span class="day-date">Lun 22/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-AUT 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
         <div class="day-row"><span class="day-date">Mar 23/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-row"><span class="day-date">Mié 24/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-row"><span class="day-date">Jue 25/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-row"><span class="day-date">Vie 26/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-ok">✓ entrada</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span><span class="badge b-ok">✓ entrada</span></div></div>
+        <div class="day-row"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
         <div class="day-row"><span class="day-date">Lun 29/6</span><div><div class="day-city">New Orleans</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Mar 30/6</span><div><div class="day-city">New Orleans</div><div class="day-note">Preservation Hall (jazz)</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Mié 1/7</span><div><div class="day-city">Pto. intermedio</div><div class="day-note">Roadtrip NOLA–Pensacola–Tallahasse</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Jue 2/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Roadtrip Tallahasse–Miami</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
         <div class="day-row"><span class="day-date">Vie 3/7</span><div><div class="day-city">Miami</div><div class="day-note">Posible 16avos 18hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
         <div class="day-row"><span class="day-date">Lun 6/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-row"><span class="day-date">Mar 7/7</span><div><div class="day-city">Atlanta</div><div class="day-note">Posibles 8vos de final</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-ok">✓ entrada</span></div></div>
         <div class="day-row"><span class="day-date">Mié 8/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
         <div class="day-row"><span class="day-date">Jue 9/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Vuelo Atlanta–Miami</div></div><div class="day-badges"><span class="badge b-holiday">feriado 9/7</span></div></div>
         <div class="day-row"><span class="day-date">Vie 10/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-row"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
       </div>
     </div>
 
@@ -293,9 +363,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
   </div>
 
   <nav class="bottom-nav">
-    <button class="nav-item active" onclick="nav('itinerario',this)"><span class="nav-icon">🗓️</span><span>Itinerario</span></button>
-    <button class="nav-item" onclick="nav('entradas',this)"><span class="nav-icon">🎟️</span><span>Entradas</span></button>
-    <button class="nav-item" onclick="nav('alojamiento',this)"><span class="nav-icon">🏠</span><span>Alojamiento</span></button>
+    <button class="nav-item" onclick="nav('itinerario',this)"><span class="nav-icon">🗓️</span><span>Itinerario</span></button>
+    <button class="nav-item" onclick="nav('alojamiento',this)"><span class="nav-icon">🛏️</span><span>Alojamiento</span></button>
+    <button class="nav-item active" onclick="nav('home',this)"><span class="nav-icon">🏠</span><span>Resumen</span></button>
     <button class="nav-item" onclick="nav('gastos',this)"><span class="nav-icon">💰</span><span>Gastos</span></button>
     <button class="nav-item" onclick="nav('pendientes',this)"><span class="nav-icon">📋</span><span>Pendientes</span></button>
   </nav>
@@ -310,23 +380,30 @@ function nav(id, btn) {
   document.getElementById('sc').scrollTop = 0;
 }
 
+function navTo(id) {
+  var btn = document.querySelector('.nav-item[onclick*="' + id + '"]');
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('sc').scrollTop = 0;
+}
+
 // FIX: Countdown usando UTC para compatibilidad con Safari/iOS
 // 2026-06-13 22:40 Argentina (UTC-3) = 2026-06-14 01:40 UTC
 function tick() {
-  var target = Date.UTC(2026, 5, 14, 1, 40, 0); // mes es 0-based: 5 = junio
+  var target = Date.UTC(2026, 5, 14, 1, 40, 0);
   var now = Date.now();
   var t = target - now;
-  if (t <= 0) {
-    document.getElementById('cd-d').textContent = '0';
-    document.getElementById('cd-h').textContent = '00';
-    document.getElementById('cd-m').textContent = '00';
-    document.getElementById('cd-s').textContent = '00';
-    return;
-  }
-  document.getElementById('cd-d').textContent = Math.floor(t / 86400000);
-  document.getElementById('cd-h').textContent = String(Math.floor((t % 86400000) / 3600000)).padStart(2, '0');
-  document.getElementById('cd-m').textContent = String(Math.floor((t % 3600000) / 60000)).padStart(2, '0');
-  document.getElementById('cd-s').textContent = String(Math.floor((t % 60000) / 1000)).padStart(2, '0');
+  var d = t <= 0 ? '0' : Math.floor(t / 86400000);
+  var h = t <= 0 ? '00' : String(Math.floor((t % 86400000) / 3600000)).padStart(2, '0');
+  var m = t <= 0 ? '00' : String(Math.floor((t % 3600000) / 60000)).padStart(2, '0');
+  var s = t <= 0 ? '00' : String(Math.floor((t % 60000) / 1000)).padStart(2, '0');
+  // Home countdown
+  document.getElementById('cd-d2').textContent = d;
+  document.getElementById('cd-h2').textContent = h;
+  document.getElementById('cd-m2').textContent = m;
+  document.getElementById('cd-s2').textContent = s;
 }
 tick();
 setInterval(tick, 1000);
