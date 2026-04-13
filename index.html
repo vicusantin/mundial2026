@@ -29,7 +29,11 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .section{display:none;}
 .section.active{display:block;}
 /* COUNTDOWN */
-.countdown{background:var(--green-dark);border-radius:16px;padding:16px;margin-bottom:14px;color:white;}
+.countdown{background:#1a3a5c;border-radius:16px;padding:16px;margin-bottom:14px;color:white;overflow:hidden;position:relative;border:none;}
+.countdown::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(180deg,#74ACDF 0px,#74ACDF 3px,white 3px,white 6px);pointer-events:none;}
+.countdown::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(180deg,white 0px,white 3px,#74ACDF 3px,#74ACDF 6px);pointer-events:none;}
+.countdown .cd-box{background:rgba(255,255,255,.12);}
+.cd-flags{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;opacity:.45;font-size:16px;}
 .cd-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;opacity:.75;margin-bottom:6px;}
 .cd-title{font-size:18px;font-weight:700;margin-bottom:2px;}
 .cd-sub{font-size:12px;opacity:.65;margin-bottom:12px;}
@@ -175,13 +179,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <!-- HOME -->
     <div id="sec-home" class="section active">
 
-      <!-- 1. TÍTULO -->
-      <div class="page-header">
-        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
-        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
-      </div>
-
-      <!-- 2. COUNTDOWN -->
+      <!-- 1. COUNTDOWN -->
       <div class="countdown">
         <div class="cd-label">Faltan para el viaje</div>
         <div class="cd-title">Buenos Aires → Miami ✈️</div>
@@ -192,6 +190,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
           <div class="cd-box"><div class="cd-num" id="cd-m2">--</div><div class="cd-unit">min</div></div>
           <div class="cd-box"><div class="cd-num" id="cd-s2">--</div><div class="cd-unit">seg</div></div>
         </div>
+      </div>
+
+      <!-- 2. TÍTULO -->
+      <div class="page-header">
+        <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
+        <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
       </div>
 
       <!-- 3. PRÓXIMAS PARADAS -->
