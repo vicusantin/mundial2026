@@ -138,6 +138,21 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .page-header{margin-bottom:14px;}
 .page-title{font-size:22px;font-weight:800;}
 .page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
+/* SUGERENCIAS IA */
+.day-row{cursor:pointer;transition:background .1s;}
+.day-row:active{background:#f7f6f1;}
+.day-suggestions{display:none;background:linear-gradient(135deg,#f0faf5,#eaf3de);border-radius:10px;margin:-2px 0 6px;padding:12px 14px;border-left:3px solid var(--green);}
+.day-suggestions.open{display:block;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+.sug-loading{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);}
+.sug-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.2s ease-in-out infinite;}
+.sug-dot:nth-child(2){animation-delay:.2s;}
+.sug-dot:nth-child(3){animation-delay:.4s;}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.1);}}
+.sug-title{font-size:10px;font-weight:700;color:var(--green-dark);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.sug-item{font-size:13px;color:var(--text);padding:5px 0;border-bottom:1px solid rgba(29,158,117,.15);line-height:1.5;}
+.sug-item:last-child{border-bottom:none;padding-bottom:0;}
+.sug-item b{color:var(--green-dark);}
 </style>
 </head>
 <body>
@@ -226,35 +241,64 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
       </div>
       <div class="card">
         <div class="card-title">Itinerario completo</div>
-        <div class="day-row"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Lun 15/6</span><div><div class="day-city">Kansas</div><div class="day-note">Feriado</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
-        <div class="day-row"><span class="day-date">Mar 16/6</span><div><div class="day-city">Kansas City</div><div class="day-note">ARG-ALG 21hs</div></div><div class="day-badges"><span class="badge b-work">trabajan</span><span class="badge b-ok">✓ entrada</span></div></div>
-        <div class="day-row"><span class="day-date">Mié 17/6</span><div><div class="day-city">Kansas → Chicago</div><div class="day-note">Traslado en auto</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Jue 18/6</span><div><div class="day-city">Chicago</div><div class="day-note">Green Mill, Buddy Guy's</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Vie 19/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Lun 22/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-AUT 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
-        <div class="day-row"><span class="day-date">Mar 23/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Mié 24/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Jue 25/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Vie 26/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span><span class="badge b-ok">✓ entrada</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Lun 29/6</span><div><div class="day-city">New Orleans</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Mar 30/6</span><div><div class="day-city">New Orleans</div><div class="day-note">Preservation Hall (jazz)</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Mié 1/7</span><div><div class="day-city">Pto. intermedio</div><div class="day-note">Roadtrip NOLA–Pensacola–Tallahasse</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Jue 2/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Roadtrip Tallahasse–Miami</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
-        <div class="day-row"><span class="day-date">Vie 3/7</span><div><div class="day-city">Miami</div><div class="day-note">Posible 16avos 18hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
-        <div class="day-row"><span class="day-date">Lun 6/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Mar 7/7</span><div><div class="day-city">Atlanta</div><div class="day-note">Posibles 8vos de final</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-ok">✓ entrada</span></div></div>
-        <div class="day-row"><span class="day-date">Mié 8/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
-        <div class="day-row"><span class="day-date">Jue 9/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Vuelo Atlanta–Miami</div></div><div class="day-badges"><span class="badge b-holiday">feriado 9/7</span></div></div>
-        <div class="day-row"><span class="day-date">Vie 10/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
-        <div class="day-row"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-row" onclick="toggleSug(this,'Buenos Aires','Salida EZE 22:40hs')"><span class="day-date">Sáb 13/6</span><div><div class="day-city">Buenos Aires</div><div class="day-note">Salida EZE 22:40hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami (llegada + vuelo a Kansas City)','Día de viaje, llegada 7hs y vuelo a las 13hs')"><span class="day-date">Dom 14/6</span><div><div class="day-city">Miami → Kansas</div><div class="day-note">Llegada 7hs, vuelo 13hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Kansas City','Feriado, día libre para explorar')"><span class="day-date">Lun 15/6</span><div><div class="day-city">Kansas</div><div class="day-note">Feriado</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Kansas City','Partido ARG vs Argelia a las 21hs')"><span class="day-date">Mar 16/6</span><div><div class="day-city">Kansas City</div><div class="day-note">ARG-ALG 21hs</div></div><div class="day-badges"><span class="badge b-work">trabajan</span><span class="badge b-ok">✓ entrada</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Chicago (llegada desde Kansas City en auto)','Traslado en auto, primer día en Chicago')"><span class="day-date">Mié 17/6</span><div><div class="day-city">Kansas → Chicago</div><div class="day-note">Traslado en auto</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Chicago','Día libre, se mencionan Green Mill y Buddy Guy como ideas de música en vivo')"><span class="day-date">Jue 18/6</span><div><div class="day-city">Chicago</div><div class="day-note">Green Mill, Buddy Guy's</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Chicago','Día libre para explorar la ciudad')"><span class="day-date">Vie 19/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Chicago','Fin de semana, día libre en la ciudad')"><span class="day-date">Sáb 20/6</span><div><div class="day-city">Chicago</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Chicago (salida a Dallas a las 20:55)','Mañana libre antes del vuelo MDW-DAL')"><span class="day-date">Dom 21/6</span><div><div class="day-city">Chicago → Dallas</div><div class="day-note">Salida MDW 20:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Partido ARG vs Austria a las 13hs')"><span class="day-date">Lun 22/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-AUT 13hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Día de trabajo pero con tiempo libre por las noches')"><span class="day-date">Mar 23/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Día de trabajo, tarde/noche libre')"><span class="day-date">Mié 24/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Día de trabajo, tarde/noche libre')"><span class="day-date">Jue 25/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Día de trabajo, tarde/noche libre')"><span class="day-date">Vie 26/6</span><div><div class="day-city">Dallas</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Dallas','Partido ARG vs Jordania a las 22hs')"><span class="day-date">Sáb 27/6</span><div><div class="day-city">Dallas</div><div class="day-note">ARG-JOR 22hs</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span><span class="badge b-ok">✓ entrada</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'New Orleans (viajando desde Dallas via Lafayette)','Día de roadtrip Dallas–Lafayette–NOLA')"><span class="day-date">Dom 28/6</span><div><div class="day-city">→ New Orleans</div><div class="day-note">Roadtrip Dallas–Lafayette–NOLA</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'New Orleans','Día libre para explorar la ciudad')"><span class="day-date">Lun 29/6</span><div><div class="day-city">New Orleans</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'New Orleans','Tarde/noche en Preservation Hall para jazz en vivo')"><span class="day-date">Mar 30/6</span><div><div class="day-city">New Orleans</div><div class="day-note">Preservation Hall (jazz)</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Pensacola y Tallahassee Florida (roadtrip desde New Orleans)','Día de viaje por la costa del Golfo')"><span class="day-date">Mié 1/7</span><div><div class="day-city">Pto. intermedio</div><div class="day-note">Roadtrip NOLA–Pensacola–Tallahasse</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami (llegando desde Tallahassee en auto)','Día de viaje, llegada a Miami')"><span class="day-date">Jue 2/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Roadtrip Tallahasse–Miami</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami','Posible partido de 16avos a las 18hs')"><span class="day-date">Vie 3/7</span><div><div class="day-city">Miami</div><div class="day-note">Posible 16avos 18hs</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-wip">WIP</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami','Fin de semana, día libre en Miami')"><span class="day-date">Sáb 4/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami (viajando a Atlanta)','Traslado Miami–Atlanta')"><span class="day-date">Dom 5/7</span><div><div class="day-city">→ Atlanta</div><div class="day-note">Traslado Miami–Atlanta</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Atlanta','Día de trabajo, tarde/noche libre para explorar')"><span class="day-date">Lun 6/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Atlanta','Posible partido de 8vos de final')"><span class="day-date">Mar 7/7</span><div><div class="day-city">Atlanta</div><div class="day-note">Posibles 8vos de final</div></div><div class="day-badges"><span class="badge b-vac">vacaciones</span><span class="badge b-ok">✓ entrada</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Atlanta','Día de trabajo, tarde/noche libre')"><span class="day-date">Mié 8/7</span><div><div class="day-city">Atlanta</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-work">trabajan</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami (vuelo desde Atlanta, feriado 9 de julio)','Feriado argentino, viajando de Atlanta a Miami')"><span class="day-date">Jue 9/7</span><div><div class="day-city">→ Miami</div><div class="day-note">Vuelo Atlanta–Miami</div></div><div class="day-badges"><span class="badge b-holiday">feriado 9/7</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami','Feriado, día libre en Miami')"><span class="day-date">Vie 10/7</span><div><div class="day-city">Miami</div><div class="day-note">—</div></div><div class="day-badges"><span class="badge b-holiday">feriado</span></div></div>
+        <div class="day-suggestions"></div>
+        <div class="day-row" onclick="toggleSug(this,'Miami','Último día, vuelo de regreso a Buenos Aires a las 23:55')"><span class="day-date">Sáb 11/7</span><div><div class="day-city">Miami</div><div class="day-note">Salida MIA 23:55</div></div><div class="day-badges"><span class="badge b-vac">fin de semana</span></div></div>
+        <div class="day-suggestions"></div>
       </div>
     </div>
 
@@ -407,6 +451,65 @@ function tick() {
 }
 tick();
 setInterval(tick, 1000);
+
+// Caché de sugerencias para no repetir llamadas
+var sugCache = {};
+
+async function toggleSug(row, ciudad, contexto) {
+  var panel = row.nextElementSibling;
+  if (!panel || !panel.classList.contains('day-suggestions')) return;
+
+  // Si ya está abierto, cerrar
+  if (panel.classList.contains('open')) {
+    panel.classList.remove('open');
+    return;
+  }
+
+  // Cerrar otros paneles abiertos
+  document.querySelectorAll('.day-suggestions.open').forEach(function(p) {
+    p.classList.remove('open');
+  });
+
+  panel.classList.add('open');
+
+  // Si ya tiene contenido cacheado, mostrarlo
+  var cacheKey = ciudad;
+  if (sugCache[cacheKey]) {
+    panel.innerHTML = sugCache[cacheKey];
+    return;
+  }
+
+  // Mostrar loader
+  panel.innerHTML = '<div class="sug-loading"><div class="sug-dot"></div><div class="sug-dot"></div><div class="sug-dot"></div><span>Buscando qué hacer...</span></div>';
+
+  try {
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: 'Somos 3 amigos argentinos viajando al Mundial 2026 en USA. Estamos en ' + ciudad + '. Contexto del día: ' + contexto + '. Danos 4 sugerencias concretas de qué hacer, ver, comer o visitar. Respondé SOLO en JSON con este formato exacto (sin markdown, sin explicación extra): {"sugerencias":[{"emoji":"🍔","titulo":"Nombre del lugar o actividad","detalle":"Una oración corta describiendo por qué vale la pena"},{"emoji":"🎵","titulo":"...","detalle":"..."}]}'
+        }]
+      })
+    });
+    var data = await response.json();
+    var text = data.content[0].text.trim();
+    // Limpiar posibles markdown fences
+    text = text.replace(/```json|```/g, '').trim();
+    var parsed = JSON.parse(text);
+    var html = '<div class="sug-title">✨ Qué hacer</div>' +
+      parsed.sugerencias.map(function(s) {
+        return '<div class="sug-item">' + s.emoji + ' <b>' + s.titulo + '</b> — ' + s.detalle + '</div>';
+      }).join('');
+    sugCache[cacheKey] = html;
+    panel.innerHTML = html;
+  } catch(e) {
+    panel.innerHTML = '<div class="sug-item" style="color:var(--muted)">No se pudieron cargar sugerencias. Intentá de nuevo.</div>';
+  }
+}
 
 var sw = { vos: true, ivan: true, edu: true };
 window._splitWho = sw;
