@@ -28,12 +28,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .nav-icon{font-size:20px;line-height:1;}
 .section{display:none;}
 .section.active{display:block;}
-/* COUNTDOWN */
 .countdown{background:#1a3a5c;border-radius:16px;padding:16px;margin-bottom:14px;color:white;overflow:hidden;position:relative;border:none;}
 .countdown::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(180deg,#74ACDF 0px,#74ACDF 3px,white 3px,white 6px);pointer-events:none;}
 .countdown::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(180deg,white 0px,white 3px,#74ACDF 3px,#74ACDF 6px);pointer-events:none;}
 .countdown .cd-box{background:rgba(255,255,255,.12);}
-.cd-flags{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;opacity:.45;font-size:16px;}
 .cd-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;opacity:.75;margin-bottom:6px;}
 .cd-title{font-size:18px;font-weight:700;margin-bottom:2px;}
 .cd-sub{font-size:12px;opacity:.65;margin-bottom:12px;}
@@ -41,15 +39,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .cd-box{flex:1;background:rgba(255,255,255,.15);border-radius:10px;padding:10px 4px;text-align:center;}
 .cd-num{font-size:28px;font-weight:700;line-height:1;}
 .cd-unit{font-size:9px;opacity:.7;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
-/* CARDS */
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .card-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;}
-/* STATS */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;}
 .stat-label{font-size:11px;color:var(--muted);margin-bottom:4px;line-height:1.3;}
 .stat-val{font-size:20px;font-weight:700;}
-/* BADGES */
 .badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;white-space:nowrap;}
 .b-vac{background:var(--blue-light);color:var(--blue);}
 .b-weekend{background:#f0f0ee;color:#888;}
@@ -57,14 +52,13 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .b-holiday{background:var(--green-light);color:var(--green-dark);}
 .b-ok{background:var(--green-light);color:#3B6D11;}
 .b-wip{background:var(--amber-light);color:var(--amber);}
-/* DAY ROWS */
-.day-row{display:grid;grid-template-columns:68px 1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #f0ede8;}
+.day-row{display:grid;grid-template-columns:68px 1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #f0ede8;cursor:pointer;transition:background .1s;}
 .day-row:last-child{border-bottom:none;}
+.day-row:active{background:#f7f6f1;}
 .day-date{font-size:12px;color:var(--muted);padding-top:2px;}
 .day-city{font-size:14px;font-weight:600;}
 .day-note{font-size:12px;color:var(--muted);margin-top:2px;}
 .day-badges{display:flex;flex-direction:column;gap:3px;align-items:flex-end;}
-/* TICKETS */
 .ticket{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .ticket-wip{border-color:#EF9F27;}
 .ticket-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
@@ -73,30 +67,25 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .ticket-info{font-size:12px;color:var(--muted);margin-top:3px;}
 .ticket-price{font-size:17px;font-weight:700;color:var(--green);white-space:nowrap;text-align:right;}
 .wip-label{font-size:12px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin:14px 0 6px;}
-/* ALOJ */
 .aloj{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
 .aloj-top{display:flex;justify-content:space-between;align-items:flex-start;}
 .aloj-city{font-size:16px;font-weight:700;}
 .aloj-dates{font-size:12px;color:var(--muted);margin-top:2px;}
 .aloj-price{font-size:17px;font-weight:700;color:var(--green);}
-.aloj-price-p{font-size:15px;font-weight:700;color:var(--amber);}
 .aloj-sub{font-size:11px;color:var(--muted);text-align:right;margin-top:2px;}
 .aloj-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:13px;color:var(--green);text-decoration:none;border:1px solid var(--green);border-radius:8px;padding:7px 14px;font-weight:500;}
 .aloj-nolink{display:inline-flex;align-items:center;margin-top:10px;font-size:12px;color:var(--muted);border:1px dashed var(--border);border-radius:8px;padding:6px 12px;}
-/* CHECK */
 .check-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #f0ede8;font-size:14px;}
 .check-item:last-child{border-bottom:none;}
 .cdot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
 .cdot-ok{background:var(--green-light);color:#3B6D11;}
 .cdot-todo{background:var(--amber-light);color:var(--amber);border:1.5px dashed #EF9F27;}
-/* SPLIT TABLE */
 .stbl{width:100%;border-collapse:collapse;font-size:13px;}
 .stbl th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:6px 4px;border-bottom:1px solid var(--border);text-align:right;font-weight:500;}
 .stbl th:first-child{text-align:left;}
 .stbl td{padding:9px 4px;border-bottom:1px solid #f0ede8;vertical-align:middle;}
 .stbl tr:last-child td{border-bottom:none;}
 .tr{text-align:right;}
-/* EXPENSE FORM */
 .eform{background:#f7f6f1;border-radius:12px;padding:14px;margin-bottom:12px;}
 .eform-ttl{font-size:13px;font-weight:500;color:var(--muted);margin-bottom:10px;}
 .eform input,.eform select{width:100%;font-size:15px;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:white;color:var(--text);margin-bottom:8px;-webkit-appearance:none;appearance:none;}
@@ -108,14 +97,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .ce{background:var(--amber-light);color:var(--amber);border-color:var(--amber);}
 .btn-add{width:100%;background:var(--green);color:white;border:none;border-radius:10px;padding:13px;font-size:16px;font-weight:700;cursor:pointer;}
 .btn-add:active{background:var(--green-dark);}
-/* EXPENSE ROW */
 .erow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #f0ede8;}
 .erow:last-child{border-bottom:none;}
 .edesc{font-size:14px;font-weight:600;}
 .emeta{font-size:12px;color:var(--muted);margin-top:2px;}
 .etotal{font-size:15px;font-weight:700;}
 .bdel{background:none;border:none;color:#ccc;font-size:17px;cursor:pointer;padding:0 2px;}
-/* BALANCE */
 .brow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0ede8;}
 .brow:last-child{border-bottom:none;}
 .bperson{display:flex;align-items:center;gap:10px;}
@@ -137,9 +124,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .home-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .home-card-title{font-size:14px;font-weight:700;}
 .home-card-link{font-size:12px;color:var(--green);font-weight:600;}
-.home-gasto-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:4px 0;border-bottom:1px solid #f0ede8;}
-.home-gasto-row:last-child{border-bottom:none;}
-/* FIXTURE */
 .fix-day{margin-bottom:10px;}
 .fix-day-header{background:var(--green-dark);color:white;border-radius:10px 10px 0 0;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;}
 .fix-day-date{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
@@ -151,22 +135,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .fix-meta{font-size:11px;color:var(--muted);margin-top:2px;}
 .fix-time{font-size:13px;font-weight:700;color:var(--green-dark);white-space:nowrap;text-align:right;}
 .fix-tz{font-size:10px;color:var(--muted);text-align:right;}
-
-
 .page-header{margin-bottom:14px;}
 .page-title{font-size:22px;font-weight:800;}
 .page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
-/* SUGERENCIAS IA */
-.day-row{cursor:pointer;transition:background .1s;}
-.day-row:active{background:#f7f6f1;}
 .day-suggestions{display:none;background:linear-gradient(135deg,#f0faf5,#eaf3de);border-radius:10px;margin:-2px 0 6px;padding:12px 14px;border-left:3px solid var(--green);}
 .day-suggestions.open{display:block;animation:fadeIn .2s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
-.sug-loading{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);}
-.sug-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.2s ease-in-out infinite;}
-.sug-dot:nth-child(2){animation-delay:.2s;}
-.sug-dot:nth-child(3){animation-delay:.4s;}
-@keyframes pulse{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.1);}}
 .sug-title{font-size:10px;font-weight:700;color:var(--green-dark);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
 .sug-item{font-size:13px;color:var(--text);padding:5px 0;border-bottom:1px solid rgba(29,158,117,.15);line-height:1.5;}
 .sug-item:last-child{border-bottom:none;padding-bottom:0;}
@@ -179,8 +153,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 
     <!-- HOME -->
     <div id="sec-home" class="section active">
-
-      <!-- 1. COUNTDOWN -->
       <div class="countdown">
         <div class="cd-label">Faltan para el viaje</div>
         <div class="cd-title">Buenos Aires → Miami ✈️</div>
@@ -192,28 +164,16 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
           <div class="cd-box"><div class="cd-num" id="cd-s2">--</div><div class="cd-unit">seg</div></div>
         </div>
       </div>
-
-      <!-- 2. TÍTULO -->
       <div class="page-header">
         <div class="page-title">Mundial 2026 ⭐⭐⭐</div>
         <div class="page-sub">Vicky, Ivan & Eduardo · 13 jun – 11 jul</div>
       </div>
-
-      <!-- 3. PRÓXIMAS PARADAS -->
       <div class="home-card" onclick="navTo('itinerario')">
-        <div class="home-card-header">
-          <span class="home-card-title">🗓️ Próximas paradas</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
+        <div class="home-card-header"><span class="home-card-title">🗓️ Próximas paradas</span><span class="home-card-link">Ver todo →</span></div>
         <div id="preview-itinerario"></div>
       </div>
-
-      <!-- 4. ENTRADAS -->
       <div class="home-card" onclick="navTo('entradas')">
-        <div class="home-card-header">
-          <span class="home-card-title">🎟️ Entradas</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
+        <div class="home-card-header"><span class="home-card-title">🎟️ Entradas</span><span class="home-card-link">Ver todo →</span></div>
         <div style="display:flex;gap:8px;margin-top:4px;">
           <div style="flex:1;background:var(--green-light);border-radius:10px;padding:10px;text-align:center;">
             <div style="font-size:22px;font-weight:800;color:var(--green-dark);">3</div>
@@ -228,37 +188,26 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
           <div>✓ ARG vs Argelia · 16/6 Kansas City</div>
           <div>✓ ARG vs Jordania · 27/6 Dallas</div>
           <div>✓ 8vos de final · 7/7 Atlanta</div>
-          <div style="color:var(--amber);">⏳ ARG vs Austria · 22/6 Dallas</div>
+          <div style="color:var(--amber);">🎟️ ARG vs Austria · 22/6 Dallas <span style="font-size:11px;">(2/3)</span></div>
           <div style="color:var(--amber);">⏳ 16avos de final · 3/7 Miami</div>
         </div>
       </div>
-
-      <!-- 5. PENDIENTES PREVIEW -->
       <div class="home-card" onclick="navTo('pendientes')">
-        <div class="home-card-header">
-          <span class="home-card-title">📋 Pendientes</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
+        <div class="home-card-header"><span class="home-card-title">📋 Pendientes</span><span class="home-card-link">Ver todo →</span></div>
         <div style="margin-top:4px;display:flex;flex-direction:column;gap:0;">
-          <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Conseguir entradas ARG-AUT (Dallas, 22/6)</div></div>
+          <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Conseguir 3ra entrada ARG-AUT (Dallas, 22/6)</div></div>
           <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Confirmar entradas 16avos (Miami, 3/7)</div></div>
           <div class="check-item" style="padding:7px 0;font-size:13px;"><div class="cdot cdot-todo">!</div><div>Pagar Dallas completo (8/6)</div></div>
-          <div class="check-item" style="padding:7px 0;font-size:13px;border-bottom:none;"><div class="cdot cdot-todo">!</div><div>Reservar vuelo Miami–Atlanta</div></div>
+          <div class="check-item" style="padding:7px 0;font-size:13px;border-bottom:none;"><div class="cdot cdot-todo">!</div><div>Pagar Chicago restante (2/6)</div></div>
         </div>
       </div>
-
-      <!-- 6. FIXTURE PREVIEW -->
       <div class="home-card" onclick="navTo('fixture')">
-        <div class="home-card-header">
-          <span class="home-card-title">🌍 Próximos partidos</span>
-          <span class="home-card-link">Ver todo →</span>
-        </div>
+        <div class="home-card-header"><span class="home-card-title">🌍 Próximos partidos</span><span class="home-card-link">Ver todo →</span></div>
         <div id="preview-fixture"></div>
       </div>
-
     </div>
 
-    <!-- FIXTURE COMPLETO -->
+    <!-- FIXTURE -->
     <div id="sec-fixture" class="section">
       <div class="page-header">
         <div class="page-title">Fixture del Mundial 🌍</div>
@@ -348,7 +297,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
       <div class="ticket"><div class="ticket-top"><div><div class="ticket-name">✓ ARG vs Jordania</div><div class="ticket-info">Sáb 27/6 · Dallas · 22hs</div><div style="margin-top:6px;"><span class="badge b-vac">3 reventa oficial</span></div></div><div><div class="ticket-price">$1.029</div><div style="font-size:11px;color:var(--muted);text-align:right;">c/u</div></div></div></div>
       <div class="ticket"><div class="ticket-top"><div><div class="ticket-name">✓ 8vos de final</div><div class="ticket-info">Mar 7/7 · Atlanta · 3 cat 2</div><div style="margin-top:6px;"><span class="badge b-vac">3 reventa oficial</span></div></div><div><div class="ticket-price">$1.150</div><div style="font-size:11px;color:var(--muted);text-align:right;">c/u</div></div></div></div>
       <div class="wip-label">WIP — por conseguir</div>
-      <div class="ticket ticket-wip"><div class="ticket-top"><div><div class="ticket-name ticket-name-wip">WIP · ARG vs Austria</div><div class="ticket-info">Lun 22/6 · Dallas · 13hs</div><div style="margin-top:6px;"><span class="badge b-wip">pendiente</span></div></div><div style="color:var(--amber);font-size:17px;font-weight:700;">—</div></div></div>
+      <div class="ticket ticket-wip"><div class="ticket-top"><div><div class="ticket-name ticket-name-wip">⚠️ ARG vs Austria <span style="font-size:13px;font-weight:500;">(2 de 3)</span></div><div class="ticket-info">Lun 22/6 · Dallas · 13hs</div><div style="margin-top:6px;"><span class="badge b-ok">2 conseguidas</span> <span class="badge b-wip" style="margin-left:4px;">1 pendiente</span></div></div><div style="color:var(--amber);font-size:17px;font-weight:700;">2/3</div></div></div>
       <div class="ticket ticket-wip"><div class="ticket-top"><div><div class="ticket-name ticket-name-wip">WIP · 16avos de final</div><div class="ticket-info">Vie 3/7 · Miami · 18hs (posible)</div><div style="margin-top:6px;"><span class="badge b-wip">pendiente</span></div></div><div style="color:var(--amber);font-size:17px;font-weight:700;">—</div></div></div>
     </div>
 
@@ -368,24 +317,26 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <div id="sec-gastos" class="section">
       <div class="page-header"><div class="page-title">Gastos 💰</div></div>
       <div class="stats">
-        <div class="stat"><div class="stat-label">Pre-viaje pagado</div><div class="stat-val" style="color:var(--green);font-size:15px;">$5.549</div></div>
-        <div class="stat"><div class="stat-label">Por pagar</div><div class="stat-val" style="color:var(--amber);font-size:15px;">$4.844</div></div>
+        <div class="stat"><div class="stat-label">Pre-viaje pagado</div><div class="stat-val" style="color:var(--green);font-size:15px;">$5.242</div></div>
+        <div class="stat"><div class="stat-label">Por pagar</div><div class="stat-val" style="color:var(--amber);font-size:15px;">$5.984</div></div>
         <div class="stat"><div class="stat-label">En viaje</div><div class="stat-val" id="stat-v" style="font-size:15px;">$0</div></div>
       </div>
       <div class="sub-title">Pre-viaje</div>
       <div class="card">
         <table class="stbl">
           <tr><th>Concepto</th><th class="tr">Total</th><th class="tr">Pagado</th><th class="tr">Debe</th></tr>
-          <tr><td>Aloj. Kansas</td><td class="tr">$1.107</td><td class="tr" style="color:var(--green);">$554</td><td class="tr" style="color:var(--amber);">$554</td></tr>
-          <tr><td>Aloj. Dallas</td><td class="tr">$1.912</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.912</td></tr>
-          <tr><td>Vuelo CHI–DAL</td><td class="tr">$760</td><td class="tr" style="color:var(--green);">$760</td><td class="tr">—</td></tr>
-          <tr><td>Aloj. Chicago</td><td class="tr">$1.201</td><td class="tr" style="color:var(--green);">$547</td><td class="tr" style="color:var(--amber);">$654</td></tr>
-          <tr><td>Auto KAN–CHI</td><td class="tr">$689</td><td class="tr" style="color:var(--green);">$689</td><td class="tr">—</td></tr>
-          <tr><td>Auto DAL–MIA</td><td class="tr">—</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">pend.</td></tr>
-          <tr><td>Aloj. Miami</td><td class="tr">$1.103</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.103</td></tr>
-          <tr><td>Aloj. NOLA</td><td class="tr">—</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">pend.</td></tr>
-          <tr><td>Aloj. Atlanta</td><td class="tr">$1.382</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.382</td></tr>
-          <tr><td>Vuelo MIA–ATL</td><td class="tr">—</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">pend.</td></tr>
+          <tr><td>Aloj. Kansas</td><td class="tr">$1.107,84</td><td class="tr" style="color:var(--green);">$553,92</td><td class="tr" style="color:var(--amber);">$553,92</td></tr>
+          <tr><td>Aloj. Dallas</td><td class="tr">$1.912,27</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.912,27 <span style="font-size:10px;">(8/6)</span></td></tr>
+          <tr><td>Vuelo CHI–DAL</td><td class="tr">$760,44</td><td class="tr" style="color:var(--green);">$760,44</td><td class="tr">—</td></tr>
+          <tr><td>Aloj. Chicago</td><td class="tr">$1.201,16</td><td class="tr" style="color:var(--green);">$546,92</td><td class="tr" style="color:var(--amber);">$654,24 <span style="font-size:10px;">(2/6)</span></td></tr>
+          <tr><td>Auto KAN–CHI</td><td class="tr">$688,69</td><td class="tr" style="color:var(--green);">$688,69</td><td class="tr">—</td></tr>
+          <tr><td>Auto DAL–MIA</td><td class="tr">$1.211</td><td class="tr" style="color:var(--green);">$1.211</td><td class="tr">—</td></tr>
+          <tr><td>Aloj. Miami</td><td class="tr">$1.103</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.103 <span style="font-size:10px;">(23/6)</span></td></tr>
+          <tr><td>Aloj. NOLA</td><td class="tr">$547,58</td><td class="tr" style="color:var(--green);">$547,58</td><td class="tr">—</td></tr>
+          <tr><td>Aloj. Atlanta</td><td class="tr">$1.382</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$1.382 <span style="font-size:10px;">(26/6)</span></td></tr>
+          <tr><td>Vuelo MIA–ATL</td><td class="tr">$716,40</td><td class="tr" style="color:var(--green);">$716,40</td><td class="tr">—</td></tr>
+          <tr><td>Aloj. punto medio</td><td class="tr">$378,64</td><td class="tr">—</td><td class="tr" style="color:var(--amber);">$378,64 <span style="font-size:10px;">(en aloj.)</span></td></tr>
+          <tr><td>Entradas Strokes</td><td class="tr">$216,30</td><td class="tr" style="color:var(--green);">$216,30</td><td class="tr">—</td></tr>
         </table>
       </div>
       <div class="sub-title">En el viaje</div>
@@ -416,26 +367,27 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Pasaje BA–Miami ($1.400)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Pasaje Miami–Kansas ($442)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Pasaje Chicago–Dallas ($253.50)</div></div>
+        <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Vuelo Miami–Atlanta ($716.40)</div></div>
+        <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Auto Dallas–Miami ($1.211)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento Kansas ($369.30)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento Chicago ($400)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento Dallas ($637.40)</div></div>
+        <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento New Orleans ($547.58)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento Miami ($367.70)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Alojamiento Atlanta ($460.70)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Auto Kansas–Chicago ($229.60)</div></div>
         <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Entradas ARG-ALG, ARG-JOR y 8vos</div></div>
+        <div class="check-item"><div class="cdot cdot-ok">✓</div><div>Entradas Strokes ($216.30)</div></div>
       </div>
       <div class="card" style="margin-top:10px;">
         <div class="card-title" style="color:var(--amber);">! Pendiente</div>
-        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Conseguir entradas ARG-AUT (Dallas, 22/6)</div></div>
+        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Conseguir 3ra entrada ARG-AUT (Dallas, 22/6)</div></div>
         <div class="check-item"><div class="cdot cdot-todo">!</div><div>Confirmar entradas 16avos (Miami, 3/7)</div></div>
-        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Reservar alojamiento New Orleans (28/6–1/7)</div></div>
-        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Reservar alojamiento punto intermedio</div></div>
-        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Reservar / cotizar auto Dallas–Miami</div></div>
-        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Reservar vuelo Miami–Atlanta</div></div>
         <div class="check-item"><div class="cdot cdot-todo">!</div><div>Pagar Dallas completo (8/6) — cancel. hasta 16/6</div></div>
         <div class="check-item"><div class="cdot cdot-todo">!</div><div>Pagar Chicago restante (2/6) — cancel. hasta 18/5</div></div>
         <div class="check-item"><div class="cdot cdot-todo">!</div><div>Pagar Miami (23/6) — cancel. hasta 1/7</div></div>
         <div class="check-item"><div class="cdot cdot-todo">!</div><div>Pagar Atlanta (26/6) — cancel. hasta 4/7</div></div>
+        <div class="check-item"><div class="cdot cdot-todo">!</div><div>Pagar alojamiento punto medio (al llegar)</div></div>
       </div>
     </div>
 
@@ -458,7 +410,6 @@ function nav(id, btn) {
   btn.classList.add('active');
   document.getElementById('sc').scrollTop = 0;
 }
-
 function navTo(id) {
   var btn = document.querySelector('.nav-item[onclick*="' + id + '"]');
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -467,9 +418,6 @@ function navTo(id) {
   if (btn) btn.classList.add('active');
   document.getElementById('sc').scrollTop = 0;
 }
-
-// FIX: Countdown usando UTC para compatibilidad con Safari/iOS
-// 2026-06-13 22:40 Argentina (UTC-3) = 2026-06-14 01:40 UTC
 function tick() {
   var target = Date.UTC(2026, 5, 14, 1, 40, 0);
   var now = Date.now();
@@ -478,219 +426,58 @@ function tick() {
   var h = t <= 0 ? '00' : String(Math.floor((t % 86400000) / 3600000)).padStart(2, '0');
   var m = t <= 0 ? '00' : String(Math.floor((t % 3600000) / 60000)).padStart(2, '0');
   var s = t <= 0 ? '00' : String(Math.floor((t % 60000) / 1000)).padStart(2, '0');
-  // Home countdown
   document.getElementById('cd-d2').textContent = d;
   document.getElementById('cd-h2').textContent = h;
   document.getElementById('cd-m2').textContent = m;
   document.getElementById('cd-s2').textContent = s;
 }
-tick();
-setInterval(tick, 1000);
+tick(); setInterval(tick, 1000);
 
 var SUGERENCIAS = {
-  "13/6": [
-    {e:"🥩", t:"Don Julio o La Cabrera", d:"Último asado porteño antes del viaje, los mejores de Palermo para despedirse bien"},
-    {e:"🍦", t:"Helado en Cadore o Rapa Nui", d:"El mejor helado artesanal de Buenos Aires, una tradición antes de volar"},
-    {e:"📦", t:"Duty free en el EZE", d:"Perfume, alcohol, chocolates — lo que quieras traer o regalar, conviene acá"},
-    {e:"🌆", t:"Última noche en San Telmo", d:"El barrio más histórico de BsAs para una última cerveza y empanadas"}
-  ],
-  "14/6": [
-    {e:"🌊", t:"Fort Lauderdale Beach (escala en Miami)", d:"Si hay tiempo antes del vuelo a Kansas, la playa de FL es más tranquila que South Beach"},
-    {e:"☕", t:"Café cubano en La Carreta (Miami)", d:"El cafecito cubano más fuerte que van a tomar en su vida, clásico de la zona"},
-    {e:"🌮", t:"Versailles Restaurant, Little Havana", d:"El comedor cubano más famoso de EEUU, ideal si tienen un par de horas en Miami"},
-    {e:"🛩️", t:"Relajarse en el vuelo a Kansas", d:"Día de viaje largo — guardar energía para la semana que viene"}
-  ],
-  "15/6": [
-    {e:"🍖", t:"Joe's Kansas City Bar-B-Que", d:"El BBQ más famoso de la ciudad, las costillas Z-Man son legendarias en todo el país"},
-    {e:"🏛️", t:"National WWI Museum", d:"El museo de la Primera Guerra Mundial más importante del mundo, muy impactante"},
-    {e:"🏈", t:"Power & Light District", d:"La zona de bares y restaurantes más animada de KC, ideal para el primer día"},
-    {e:"🌉", t:"Crossroads Arts District", d:"El barrio artístico y creativo de Kansas City, galerías, murales y cafés independientes"}
-  ],
-  "16/6": [
-    {e:"🏟️", t:"Ambiente en Arrowhead pre-partido", d:"Llegar temprano al estadio, el ambiente del Mundial empieza horas antes del pitido"},
-    {e:"🌮", t:"Q39 BBQ para cargar pilas", d:"Uno de los mejores BBQ de KC para comer bien antes del ARG-ALG de las 21hs"},
-    {e:"📸", t:"Country Club Plaza", d:"El barrio más lindo de KC con arquitectura española, perfecto para fotos antes del partido"},
-    {e:"🍺", t:"Pre-partido en el River Market", d:"El mercado histórico de KC tiene bares con pantallas gigantes y ambiente de Mundial"}
-  ],
-  "17/6": [
-    {e:"🥞", t:"Desayuno en diner de ruta en Illinois", d:"El roadtrip KAN-CHI dura ~8hs, parar en un diner americano clásico es parte de la experiencia"},
-    {e:"🌽", t:"Parar en Springfield, Illinois", d:"La ciudad natal de Lincoln y, sí, también la inspiración de Los Simpsons — hay un bar temático"},
-    {e:"🍕", t:"Llegar y comer pizza deep dish", d:"Lou Malnati's o Pequod's — la pizza de sartén de Chicago es un plato en sí mismo, no una pizza normal"},
-    {e:"🌆", t:"Primera impresión del skyline de Chicago", d:"Ver los rascacielos desde el lago Michigan de noche es una de las mejores vistas del viaje"},
-    {e:"🎸", t:"The Strokes en vivo en Chicago", d:"Una de las mejores bandas de rock del siglo XXI — Julian Casablancas y compañía para arrancar Chicago de la mejor manera"}
-  ],
-  "18/6": [
-    {e:"🌆", t:"Chicago Architecture River Cruise", d:"El mejor tour de la ciudad: una hora en barco viendo los edificios más icónicos desde el río"},
-    {e:"🍕", t:"Pequod's Pizza al mediodía", d:"La deep dish con el borde caramelizado más famoso de Chicago — diferente a Lou Malnati's"},
-    {e:"🎸", t:"Buddy Guy's Legends de noche", d:"El club del legendario bluesman, música en vivo auténtica casi todas las noches"},
-    {e:"🌭", t:"Portillo's Hot Dog", d:"El hot dog de Chicago con pepinillos, mostaza y tomate fresco — una institución local, no McDonalds"}
-  ],
-  "19/6": [
-    {e:"🖼️", t:"Art Institute of Chicago", d:"Uno de los mejores museos de arte del mundo — la sala de los impresionistas es increíble"},
-    {e:"🌳", t:"Millennium Park y The Bean", d:"El parque del centro con el famoso espejo gigante, gratis y siempre lleno de vida"},
-    {e:"🍔", t:"Au Cheval para el almuerzo", d:"La hamburguesa más famosa de Chicago, con huevo frito encima — hay que hacer fila pero vale"},
-    {e:"🚂", t:"Dar una vuelta en el Elevated Train (el L)", d:"El tren elevado del centro es una experiencia única de Chicago que pocos turistas hacen"}
-  ],
-  "20/6": [
-    {e:"🏖️", t:"North Avenue Beach", d:"La playa urbana del lago Michigan, en pleno verano con los rascacielos de fondo — única en el mundo"},
-    {e:"🌮", t:"Pilsen: el barrio mexicano de Chicago", d:"El barrio latino más vibrante de la ciudad, murales enormes y los mejores tacos del sur de Chicago"},
-    {e:"🍺", t:"Wrigleyville: el barrio del estadio de los Cubs", d:"Tomar algo en los bares del barrio del estadio histórico de béisbol, pura cultura americana"},
-    {e:"🎡", t:"Navy Pier al atardecer", d:"El muelle con noria gigante y vistas al lago — el atardecer desde ahí con los edificios es espectacular"}
-  ],
-  "21/6": [
-    {e:"☕", t:"Brunch en Ina Mae Tavern", d:"Brunch cajún en Chicago antes de volar — un guiño a la New Orleans que viene"},
-    {e:"🌿", t:"Garfield Park Conservatory", d:"Uno de los invernaderos más grandes del mundo, un lugar tranquilo y sorprendente"},
-    {e:"✈️", t:"Vuelo MDW-DAL a las 20:55", d:"Aeropuerto Midway — más chico que O'Hare, llegar con tiempo igual"},
-    {e:"🤠", t:"Primera noche en Dallas: Deep Ellum", d:"El barrio más bohemio de Dallas para conocerlo recién llegados"}
-  ],
-  "22/6": [
-    {e:"🏟️", t:"ARG vs Austria en AT&T Stadium, 13hs", d:"El estadio más grande del mundo — llegar temprano para vivir el ambiente completo del Mundial"},
-    {e:"🍖", t:"Pecan Lodge antes del partido", d:"El BBQ de Texas más premiado — las costillas de res son otro nivel, desayuno de campeones"},
-    {e:"🤠", t:"Stockyards de Fort Worth por la mañana", d:"A 30 min de Dallas: rodeos reales, cowboys auténticos y cultura tejana antes del partido"},
-    {e:"🌃", t:"Deep Ellum de noche", d:"El barrio de bares, murales y música alternativa de Dallas — el mejor plan para la noche del partido"}
-  ],
-  "23/6": [
-    {e:"🌅", t:"Katy Trail al atardecer", d:"El sendero natural de 3km a lo largo del río Trinity, perfecto para correr o caminar después del trabajo"},
-    {e:"🎨", t:"Dallas Museum of Art", d:"Entrada gratuita, colección de primer nivel — buen plan para el mediodía con aire acondicionado"},
-    {e:"🌮", t:"Tacos en Fuel City", d:"La taquería abierta 24hs más famosa de Dallas, los tacos de barbacoa a cualquier hora del día"},
-    {e:"🍹", t:"Rooftop bars en Uptown", d:"La zona de bares más cool de Dallas para la noche — vistas al skyline y coctelería de calidad"}
-  ],
-  "24/6": [
-    {e:"📺", t:"Sixth Floor Museum (JFK)", d:"El edificio desde donde asesinaron a Kennedy en 1963 — uno de los museos más impactantes de EEUU"},
-    {e:"🍔", t:"Maple & Motor Burgers", d:"La hamburguesa más honesta y popular de Dallas — sin pretensiones, solo carne y sabor"},
-    {e:"🏙️", t:"Reunion Tower al atardecer", d:"La esfera geodésica de Dallas con vista 360° — de noche con el skyline iluminado es espectacular"},
-    {e:"🎯", t:"TopGolf Dallas", d:"El driving range tecnológico con comida y tragos — perfecto para after-work con los chicos"}
-  ],
-  "25/6": [
-    {e:"🐄", t:"Stockyards de Fort Worth", d:"Si no fueron el 22, hoy es el día — los rodeos, el ganado por la calle y el ambiente vaquero son únicos"},
-    {e:"🌮", t:"Velvet Taco para el almuerzo", d:"Tacos creativos y modernos — el de pollo con waffle es raro y delicioso, típico de Dallas"},
-    {e:"🎨", t:"Bishop Arts District", d:"El barrio de galerías, cafeterías de especialidad y tiendas independientes más lindo de Dallas"},
-    {e:"🥃", t:"Whiskey Cake Kitchen de noche", d:"Bar con excelente coctelería de autor y comida al horno de leña, uno de los más populares de Dallas"}
-  ],
-  "26/6": [
-    {e:"🏛️", t:"Nasher Sculpture Center", d:"Jardín de esculturas al aire libre en el corazón de Dallas — tranquilo, cultural y hermoso"},
-    {e:"🌮", t:"Revolver Taco Lounge", d:"Tacos artesanales con ingredientes de temporada, uno de los más creativos de Dallas"},
-    {e:"🍺", t:"Oak Cliff: el barrio alternativo de Dallas", d:"El barrio más auténtico de la ciudad, con bares de barrio, música local y gente real"},
-    {e:"🥩", t:"Cena en Knife Steakhouse", d:"Última noche en Dallas: un buen bife tejano de despedida antes del roadtrip a NOLA"}
-  ],
-  "27/6": [
-    {e:"🏟️", t:"ARG vs Jordania 22hs en AT&T Stadium", d:"Tercer partido de grupos — ambiente de fiesta, llegar con tiempo para el show del estadio"},
-    {e:"🌮", t:"Desayuno en Lockhart Smokehouse", d:"BBQ tejano para el desayuno del día del partido, así como lo leen"},
-    {e:"🐄", t:"Mañana en los Stockyards de Fort Worth", d:"Último sábado en Dallas, los corrales y la subasta de ganado son únicos en el mundo"},
-    {e:"🍺", t:"Pre-partido en el AT&T Stadium fan zone", d:"La zona de fanáticos alrededor del estadio arma un ambiente pre-partido increíble"}
-  ],
-  "28/6": [
-    {e:"🌿", t:"Parar en Caddo Lake (Texas)", d:"El único lago natural de Texas, con cipreses gigantes saliendo del agua — parece el Amazonas"},
-    {e:"🎷", t:"Almuerzo en Lafayette, Louisiana", d:"Al entrar a Louisiana, parar en Lafayette para probar comida cajún real: gumbo, boudin y cerveza local"},
-    {e:"🦐", t:"Probar los cracklins de ruta en LA", d:"Los chicharrones cajún de Louisiana son una cosa completamente distinta a todo — parar en cualquier estación"},
-    {e:"🌃", t:"Llegar al French Quarter de noche", d:"Bourbon Street encendida de noche es un shock cultural que hay que ver al menos una vez"}
-  ],
-  "29/6": [
-    {e:"🍵", t:"Café Du Monde para desayunar", d:"Los beignets con azúcar impalpable y café au lait frente al Mississippi — el desayuno más icónico de EEUU"},
-    {e:"🎭", t:"French Quarter a pie", d:"Callejear sin mapa: las casas con balcones de hierro forjado, los patios escondidos y la historia en cada esquina"},
-    {e:"🦐", t:"Commanders Palace para almorzar", d:"El restaurante más histórico de NOLA, con la mejor comida criolla de la ciudad — reservar con anticipación"},
-    {e:"🚢", t:"Crucero por el Mississippi al atardecer", d:"Una hora en vapor por el río más famoso del mundo, con vistas al skyline de NOLA"}
-  ],
-  "30/6": [
-    {e:"🏛️", t:"Garden District a pie por la mañana", d:"Las mansiones victorianas más impresionantes de EEUU, cementerio Lafayette incluido"},
-    {e:"🦐", t:"Dooky Chase's Restaurant", d:"El restaurante afroamericano más histórico de NOLA — la reina Leah Chase cocinó para Obama"},
-    {e:"🎺", t:"Frenchmen Street de noche (antes de Preservation Hall)", d:"La calle más auténtica de jazz de NOLA, con bares de entrada gratis y músicos de primer nivel"},
-    {e:"🎭", t:"Preservation Hall: el show de la noche", d:"El templo del jazz tradicional de New Orleans — llegar temprano, las entradas se agotan rápido"}
-  ],
-  "1/7": [
-    {e:"🏖️", t:"Pensacola Beach: la arena más blanca", d:"Una de las playas con arena más fina y blanca del mundo — el agua del Golfo es turquesa increíble"},
-    {e:"✈️", t:"National Naval Aviation Museum (Pensacola)", d:"El museo de aviación más grande y gratuito de EEUU — los aviones colgados del techo son alucinantes"},
-    {e:"🦀", t:"Peg Leg Pete's para almorzar", d:"Mariscos frescos del Golfo de México en el muelle de Pensacola Beach — los cangrejos son increíbles"},
-    {e:"🌿", t:"Wakulla Springs en Tallahassee", d:"Manantial natural cristalino donde se filmó Tarzán — podés nadar con manatíes y ver caimanes"}
-  ],
-  "2/7": [
-    {e:"🌊", t:"Fort Lauderdale Beach al llegar", d:"La base de Miami del viaje es Fort Lauderdale — la playa es más tranquila y menos turística que South Beach"},
-    {e:"🚤", t:"Las Olas Boulevard", d:"La calle principal de Fort Lauderdale con los mejores restaurantes, bares y canales con yates — muy diferente a Miami"},
-    {e:"🦞", t:"15th Street Fisheries para cenar", d:"Mariscos frescos sobre el canal, con los yates pasando — uno de los restaurantes más lindos de FL"},
-    {e:"🌅", t:"Atardecer en Fort Lauderdale Beach", d:"La playa de FL tiene uno de los mejores atardeceres de toda la costa este"}
-  ],
-  "3/7": [
-    {e:"🏟️", t:"Posible partido 16avos a las 18hs en Hard Rock", d:"El estadio de los Dolphins en Miami Gardens — si hay partido, llegar con tiempo para el ambiente"},
-    {e:"🌿", t:"Everglades National Park", d:"A 1 hora de Fort Lauderdale — caimanes, serpientes y paisajes únicos del planeta que no existen en otro lugar"},
-    {e:"🍽️", t:"Shooters Waterfront, Fort Lauderdale", d:"Restaurante sobre el agua con los mejores mariscos de la zona — muy distinto al turismo de Miami"},
-    {e:"🎨", t:"Wynwood Walls (si van a Miami)", d:"Si tienen tiempo, el barrio de arte callejero de Miami merece la pena aunque sean unas horas"}
-  ],
-  "4/7": [
-    {e:"🎆", t:"Festejos del 4 de julio", d:"Día de la Independencia americana — hay fuegos artificiales en toda la costa, Fort Lauderdale los arma sobre la playa"},
-    {e:"🚤", t:"Water taxi por los canales de FL", d:"Fort Lauderdale tiene más canales que Venecia — el water taxi es la forma más linda de recorrer la ciudad"},
-    {e:"🍺", t:"Islamorada: punta norte de los Keys", d:"A 1 hora al sur: los cayos de Florida empiezan acá, con bares sobre el agua y ambiente increíble"},
-    {e:"🦞", t:"Louie Bossi's Italian para la cena", d:"El mejor restaurante italiano de Fort Lauderdale, con pasta fresca y pizza napolitana de primer nivel"}
-  ],
-  "5/7": [
-    {e:"☕", t:"Desayuno en la playa de Fort Lauderdale", d:"Último momento en FL antes del traslado a Atlanta — un café frente al mar para despedirse"},
-    {e:"🛍️", t:"Sawgrass Mills Mall (si hay tiempo)", d:"El outlet más grande de Florida, a 20 min de FL — si falta algo o quieren comprar ropa"},
-    {e:"🚗", t:"Traslado Fort Lauderdale–Atlanta (~10hs)", d:"Día de ruta larga cruzando Florida y Georgia — parar en algún diner de Georgia en el camino"},
-    {e:"🍑", t:"Ponce City Market al llegar a Atlanta", d:"El mercado gourmet más lindo de Atlanta para comer algo rico la primera noche"}
-  ],
-  "6/7": [
-    {e:"✊", t:"Martin Luther King Jr. National Historic Site", d:"La casa natal, la tumba y la iglesia de MLK en Sweet Auburn — uno de los lugares más emotivos de EEUU"},
-    {e:"🍑", t:"Ponce City Market al mediodía", d:"Mercado gourmet en una fábrica histórica de los años 20, con los mejores restaurantes de Atlanta"},
-    {e:"🌳", t:"Piedmont Park al atardecer", d:"El gran parque urbano de Atlanta, con vistas del skyline — perfecto para descomprimir después del trabajo"},
-    {e:"🎸", t:"Little Five Points de noche", d:"El barrio alternativo de Atlanta, con bares de barrio, disquerías y ambiente muy local"}
-  ],
-  "7/7": [
-    {e:"🏟️", t:"Octavos en Mercedes-Benz Stadium, 12hs", d:"Uno de los estadios más modernos del mundo — llegar muy temprano para vivir el ambiente completo"},
-    {e:"🥤", t:"World of Coca-Cola antes del partido", d:"El museo interactivo de Coca-Cola, originaria de Atlanta, está a pasos del estadio — abre a las 10hs"},
-    {e:"🍑", t:"The Optimist para cenar", d:"Mariscos y pescados frescos en un ambiente industrial reconvertido — uno de los mejores de Atlanta"},
-    {e:"🏙️", t:"Buckhead Village de noche", d:"El barrio más animado de Atlanta — bares, restaurantes y la mejor vida nocturna de la ciudad"}
-  ],
-  "8/7": [
-    {e:"🖼️", t:"High Museum of Art", d:"El mejor museo de arte del sur de EEUU — colecciones de arte americano, africano y europeo"},
-    {e:"🌳", t:"Stone Mountain Park", d:"La roca de granito más grande del mundo, a 30 min de Atlanta — se puede subir y la vista es increíble"},
-    {e:"🍗", t:"Hattie B's Hot Chicken", d:"El pollo picante estilo Nashville más famoso de Atlanta — hay que pedirlo 'hot' si se animan"},
-    {e:"🎵", t:"East Atlanta Village", d:"El barrio más auténtico de Atlanta con bares de música indie y rock, muy diferente al centro turístico"}
-  ],
-  "9/7": [
-    {e:"🇦🇷", t:"9 de julio volando sobre EEUU", d:"Feriado patrio argentino en pleno Mundial — un momento especial aunque sea a 10.000 metros de altura"},
-    {e:"🌊", t:"Fort Lauderdale Beach al llegar", d:"De vuelta en la base de operaciones de Florida — playa directa después del vuelo"},
-    {e:"🦞", t:"Casimir Beach Bar & Grill", d:"Bar de playa local en Fort Lauderdale, mariscos frescos y cerveza fría al llegar"},
-    {e:"🌅", t:"Atardecer en el muelle de Fort Lauderdale", d:"Ver el sol caer sobre el Atlántico desde el muelle es el plan perfecto para el 9 de julio"}
-  ],
-  "10/7": [
-    {e:"🚤", t:"Día en los Keys: Key Largo", d:"A 1 hora de Fort Lauderdale — el arrecife de coral más largo de EEUU, ideal para snorkel"},
-    {e:"🍽️", t:"The Foxy Brown, Fort Lauderdale", d:"Brunch de autor con ingredientes locales, uno de los más recomendados de la ciudad"},
-    {e:"🌊", t:"Snorkel en el arrecife de FL", d:"La costa de Fort Lauderdale tiene un arrecife muy accesible — hay tours de medio día desde la playa"},
-    {e:"🎶", t:"Revolution Live, Fort Lauderdale", d:"El mejor venue de música en vivo de Fort Lauderdale — ver qué artista toca esa noche"}
-  ],
-  "11/7": [
-    {e:"🌅", t:"Último amanecer en la playa de Fort Lauderdale", d:"El viaje termina esta noche — madrugar para ver el sol salir sobre el Atlántico antes de volver"},
-    {e:"☕", t:"Desayuno en Lester's Diner", d:"El diner más clásico de Fort Lauderdale, abierto desde 1968 y 24hs — desayuno americano de despedida"},
-    {e:"🛍️", t:"Compras de último momento en Aventura Mall", d:"El mall más grande de Florida, a 20 min de FL, para lo que falte antes del vuelo nocturno"},
-    {e:"✈️", t:"Salida MIA 23:55 — vuelta a casa", d:"Llegada al EZE el 12/7 con el Mundial en el corazón y la mochila llena de recuerdos"}
-  ]
+  "13/6":[{e:"🥩",t:"Don Julio o La Cabrera",d:"Último asado porteño antes del viaje, los mejores de Palermo para despedirse bien"},{e:"🍦",t:"Helado en Cadore o Rapa Nui",d:"El mejor helado artesanal de Buenos Aires, una tradición antes de volar"},{e:"📦",t:"Duty free en el EZE",d:"Perfume, alcohol, chocolates — lo que quieras traer o regalar, conviene acá"},{e:"🌆",t:"Última noche en San Telmo",d:"El barrio más histórico de BsAs para una última cerveza y empanadas"}],
+  "14/6":[{e:"🌊",t:"Fort Lauderdale Beach",d:"Si hay tiempo antes del vuelo a Kansas, la playa de FL es más tranquila que South Beach"},{e:"☕",t:"Café cubano en La Carreta",d:"El cafecito cubano más fuerte que van a tomar en su vida, clásico de la zona"},{e:"🌮",t:"Versailles Restaurant, Little Havana",d:"El comedor cubano más famoso de EEUU, ideal si tienen un par de horas en Miami"},{e:"🛩️",t:"Relajarse en el vuelo a Kansas",d:"Día de viaje largo — guardar energía para la semana que viene"}],
+  "15/6":[{e:"🍖",t:"Joe's Kansas City Bar-B-Que",d:"El BBQ más famoso de la ciudad, las costillas Z-Man son legendarias en todo el país"},{e:"🏛️",t:"National WWI Museum",d:"El museo de la Primera Guerra Mundial más importante del mundo, muy impactante"},{e:"🏈",t:"Power & Light District",d:"La zona de bares y restaurantes más animada de KC, ideal para el primer día"},{e:"🌉",t:"Crossroads Arts District",d:"El barrio artístico y creativo de Kansas City, galerías, murales y cafés independientes"}],
+  "16/6":[{e:"🏟️",t:"Ambiente en Arrowhead pre-partido",d:"Llegar temprano al estadio, el ambiente del Mundial empieza horas antes del pitido"},{e:"🌮",t:"Q39 BBQ para cargar pilas",d:"Uno de los mejores BBQ de KC para comer bien antes del ARG-ALG de las 21hs"},{e:"📸",t:"Country Club Plaza",d:"El barrio más lindo de KC con arquitectura española, perfecto para fotos antes del partido"},{e:"🍺",t:"Pre-partido en el River Market",d:"El mercado histórico de KC tiene bares con pantallas gigantes y ambiente de Mundial"}],
+  "17/6":[{e:"🥞",t:"Desayuno en diner de ruta en Illinois",d:"El roadtrip KAN-CHI dura ~8hs, parar en un diner americano clásico es parte de la experiencia"},{e:"🌽",t:"Parar en Springfield, Illinois",d:"La ciudad natal de Lincoln y la inspiración de Los Simpsons — hay un bar temático"},{e:"🍕",t:"Llegar y comer pizza deep dish",d:"Lou Malnati's o Pequod's — la pizza de sartén de Chicago es un plato en sí mismo"},{e:"🌆",t:"Primera impresión del skyline de Chicago",d:"Ver los rascacielos desde el lago Michigan de noche es una de las mejores vistas del viaje"},{e:"🎸",t:"The Strokes en vivo en Chicago",d:"Una de las mejores bandas de rock del siglo XXI — Julian Casablancas para arrancar Chicago"}],
+  "18/6":[{e:"🌆",t:"Chicago Architecture River Cruise",d:"El mejor tour de la ciudad: una hora en barco viendo los edificios más icónicos desde el río"},{e:"🍕",t:"Pequod's Pizza al mediodía",d:"La deep dish con el borde caramelizado más famoso de Chicago"},{e:"🎸",t:"Buddy Guy's Legends de noche",d:"El club del legendario bluesman, música en vivo auténtica casi todas las noches"},{e:"🌭",t:"Portillo's Hot Dog",d:"El hot dog de Chicago con pepinillos, mostaza y tomate fresco — una institución local"}],
+  "19/6":[{e:"🖼️",t:"Art Institute of Chicago",d:"Uno de los mejores museos de arte del mundo — la sala de los impresionistas es increíble"},{e:"🌳",t:"Millennium Park y The Bean",d:"El parque del centro con el famoso espejo gigante, gratis y siempre lleno de vida"},{e:"🍔",t:"Au Cheval para el almuerzo",d:"La hamburguesa más famosa de Chicago, con huevo frito encima — hay que hacer fila pero vale"},{e:"🚂",t:"Elevated Train (el L)",d:"El tren elevado del centro es una experiencia única de Chicago que pocos turistas hacen"}],
+  "20/6":[{e:"🏖️",t:"North Avenue Beach",d:"La playa urbana del lago Michigan, en pleno verano con los rascacielos de fondo — única en el mundo"},{e:"🌮",t:"Pilsen: el barrio mexicano de Chicago",d:"El barrio latino más vibrante de la ciudad, murales enormes y los mejores tacos"},{e:"🍺",t:"Wrigleyville: el barrio del estadio de los Cubs",d:"Tomar algo en los bares del barrio del estadio histórico de béisbol, pura cultura americana"},{e:"🎡",t:"Navy Pier al atardecer",d:"El muelle con noria gigante y vistas al lago — el atardecer con los edificios es espectacular"}],
+  "21/6":[{e:"☕",t:"Brunch en Ina Mae Tavern",d:"Brunch cajún en Chicago antes de volar — un guiño a la New Orleans que viene"},{e:"🌿",t:"Garfield Park Conservatory",d:"Uno de los invernaderos más grandes del mundo, un lugar tranquilo y sorprendente"},{e:"✈️",t:"Vuelo MDW-DAL a las 20:55",d:"Aeropuerto Midway — más chico que O'Hare, llegar con tiempo igual"},{e:"🤠",t:"Primera noche en Dallas: Deep Ellum",d:"El barrio más bohemio de Dallas para conocerlo recién llegados"}],
+  "22/6":[{e:"🏟️",t:"ARG vs Austria en AT&T Stadium, 13hs",d:"El estadio más grande del mundo — llegar temprano para vivir el ambiente completo del Mundial"},{e:"🍖",t:"Pecan Lodge antes del partido",d:"El BBQ de Texas más premiado — las costillas de res son otro nivel"},{e:"🤠",t:"Stockyards de Fort Worth por la mañana",d:"A 30 min de Dallas: rodeos reales, cowboys auténticos y cultura tejana antes del partido"},{e:"🌃",t:"Deep Ellum de noche",d:"El barrio de bares, murales y música alternativa de Dallas — el mejor plan para la noche"}],
+  "23/6":[{e:"🌅",t:"Katy Trail al atardecer",d:"El sendero natural de 3km a lo largo del río Trinity, perfecto para correr o caminar"},{e:"🎨",t:"Dallas Museum of Art",d:"Entrada gratuita, colección de primer nivel — buen plan para el mediodía con aire acondicionado"},{e:"🌮",t:"Tacos en Fuel City",d:"La taquería abierta 24hs más famosa de Dallas, los tacos de barbacoa a cualquier hora"},{e:"🍹",t:"Rooftop bars en Uptown",d:"La zona de bares más cool de Dallas para la noche — vistas al skyline y coctelería de calidad"}],
+  "24/6":[{e:"📺",t:"Sixth Floor Museum (JFK)",d:"El edificio desde donde asesinaron a Kennedy en 1963 — uno de los museos más impactantes"},{e:"🍔",t:"Maple & Motor Burgers",d:"La hamburguesa más honesta y popular de Dallas — sin pretensiones, solo carne y sabor"},{e:"🏙️",t:"Reunion Tower al atardecer",d:"La esfera geodésica de Dallas con vista 360° — de noche con el skyline iluminado"},{e:"🎯",t:"TopGolf Dallas",d:"El driving range tecnológico con comida y tragos — perfecto para after-work"}],
+  "25/6":[{e:"🐄",t:"Stockyards de Fort Worth",d:"Si no fueron el 22, hoy es el día — los rodeos, el ganado por la calle y el ambiente vaquero"},{e:"🌮",t:"Velvet Taco para el almuerzo",d:"Tacos creativos y modernos — el de pollo con waffle es raro y delicioso"},{e:"🎨",t:"Bishop Arts District",d:"El barrio de galerías, cafeterías de especialidad y tiendas independientes más lindo de Dallas"},{e:"🥃",t:"Whiskey Cake Kitchen de noche",d:"Bar con excelente coctelería de autor y comida al horno de leña"}],
+  "26/6":[{e:"🏛️",t:"Nasher Sculpture Center",d:"Jardín de esculturas al aire libre en el corazón de Dallas — tranquilo, cultural y hermoso"},{e:"🌮",t:"Revolver Taco Lounge",d:"Tacos artesanales con ingredientes de temporada, uno de los más creativos de Dallas"},{e:"🍺",t:"Oak Cliff: el barrio alternativo de Dallas",d:"El barrio más auténtico de la ciudad, con bares de barrio, música local y gente real"},{e:"🥩",t:"Cena en Knife Steakhouse",d:"Última noche en Dallas: un buen bife tejano de despedida antes del roadtrip a NOLA"}],
+  "27/6":[{e:"🏟️",t:"ARG vs Jordania 22hs en AT&T Stadium",d:"Tercer partido de grupos — ambiente de fiesta, llegar con tiempo para el show del estadio"},{e:"🌮",t:"Desayuno en Lockhart Smokehouse",d:"BBQ tejano para el desayuno del día del partido, así como lo leen"},{e:"🐄",t:"Mañana en los Stockyards de Fort Worth",d:"Último sábado en Dallas, los corrales y la subasta de ganado son únicos en el mundo"},{e:"🍺",t:"Pre-partido en el AT&T Stadium fan zone",d:"La zona de fanáticos alrededor del estadio arma un ambiente pre-partido increíble"}],
+  "28/6":[{e:"🌿",t:"Parar en Caddo Lake (Texas)",d:"El único lago natural de Texas, con cipreses gigantes saliendo del agua — parece el Amazonas"},{e:"🎷",t:"Almuerzo en Lafayette, Louisiana",d:"Al entrar a Louisiana, parar en Lafayette para probar comida cajún real"},{e:"🦐",t:"Probar los cracklins de ruta en LA",d:"Los chicharrones cajún de Louisiana son una cosa completamente distinta a todo"},{e:"🌃",t:"Llegar al French Quarter de noche",d:"Bourbon Street encendida de noche es un shock cultural que hay que ver al menos una vez"}],
+  "29/6":[{e:"🍵",t:"Café Du Monde para desayunar",d:"Los beignets con azúcar impalpable y café au lait frente al Mississippi — el desayuno más icónico"},{e:"🎭",t:"French Quarter a pie",d:"Callejear sin mapa: las casas con balcones de hierro forjado, los patios escondidos"},{e:"🦐",t:"Commanders Palace para almorzar",d:"El restaurante más histórico de NOLA, con la mejor comida criolla — reservar con anticipación"},{e:"🚢",t:"Crucero por el Mississippi al atardecer",d:"Una hora en vapor por el río más famoso del mundo, con vistas al skyline de NOLA"}],
+  "30/6":[{e:"🏛️",t:"Garden District a pie por la mañana",d:"Las mansiones victorianas más impresionantes de EEUU, cementerio Lafayette incluido"},{e:"🦐",t:"Dooky Chase's Restaurant",d:"El restaurante afroamericano más histórico de NOLA — la reina Leah Chase cocinó para Obama"},{e:"🎺",t:"Frenchmen Street de noche",d:"La calle más auténtica de jazz de NOLA, con bares de entrada gratis y músicos de primer nivel"},{e:"🎭",t:"Preservation Hall: el show de la noche",d:"El templo del jazz tradicional de New Orleans — llegar temprano, las entradas se agotan rápido"}],
+  "1/7":[{e:"🏖️",t:"Pensacola Beach: la arena más blanca",d:"Una de las playas con arena más fina y blanca del mundo — el agua del Golfo es turquesa"},{e:"✈️",t:"National Naval Aviation Museum",d:"El museo de aviación más grande y gratuito de EEUU — los aviones colgados del techo son alucinantes"},{e:"🦀",t:"Peg Leg Pete's para almorzar",d:"Mariscos frescos del Golfo de México en el muelle de Pensacola Beach"},{e:"🌿",t:"Wakulla Springs en Tallahassee",d:"Manantial natural cristalino donde se filmó Tarzán — podés nadar con manatíes y ver caimanes"}],
+  "2/7":[{e:"🌊",t:"Fort Lauderdale Beach al llegar",d:"La base de Miami del viaje — la playa es más tranquila y menos turística que South Beach"},{e:"🚤",t:"Las Olas Boulevard",d:"La calle principal de Fort Lauderdale con los mejores restaurantes, bares y canales con yates"},{e:"🦞",t:"15th Street Fisheries para cenar",d:"Mariscos frescos sobre el canal, con los yates pasando — uno de los restaurantes más lindos de FL"},{e:"🌅",t:"Atardecer en Fort Lauderdale Beach",d:"La playa de FL tiene uno de los mejores atardeceres de toda la costa este"}],
+  "3/7":[{e:"🏟️",t:"Posible partido 16avos a las 18hs en Hard Rock",d:"El estadio de los Dolphins en Miami Gardens — si hay partido, llegar con tiempo"},{e:"🌿",t:"Everglades National Park",d:"A 1 hora — caimanes, serpientes y paisajes únicos del planeta que no existen en otro lugar"},{e:"🍽️",t:"Shooters Waterfront, Fort Lauderdale",d:"Restaurante sobre el agua con los mejores mariscos de la zona"},{e:"🎨",t:"Wynwood Walls",d:"El barrio de arte callejero de Miami merece la pena aunque sean unas horas"}],
+  "4/7":[{e:"🎆",t:"Festejos del 4 de julio",d:"Día de la Independencia — fuegos artificiales en toda la costa, Fort Lauderdale los arma sobre la playa"},{e:"🚤",t:"Water taxi por los canales de FL",d:"Fort Lauderdale tiene más canales que Venecia — el water taxi es la forma más linda de recorrer"},{e:"🍺",t:"Islamorada: punta norte de los Keys",d:"A 1 hora al sur: los cayos de Florida empiezan acá, bares sobre el agua y ambiente increíble"},{e:"🦞",t:"Louie Bossi's Italian para la cena",d:"El mejor restaurante italiano de Fort Lauderdale, con pasta fresca y pizza napolitana"}],
+  "5/7":[{e:"☕",t:"Desayuno en la playa de Fort Lauderdale",d:"Último momento en FL antes del traslado a Atlanta — un café frente al mar para despedirse"},{e:"🛍️",t:"Sawgrass Mills Mall",d:"El outlet más grande de Florida, a 20 min de FL — si falta algo o quieren comprar ropa"},{e:"🚗",t:"Traslado Fort Lauderdale–Atlanta (~10hs)",d:"Día de ruta larga cruzando Florida y Georgia — parar en algún diner de Georgia en el camino"},{e:"🍑",t:"Ponce City Market al llegar a Atlanta",d:"El mercado gourmet más lindo de Atlanta para comer algo rico la primera noche"}],
+  "6/7":[{e:"✊",t:"Martin Luther King Jr. National Historic Site",d:"La casa natal, la tumba y la iglesia de MLK en Sweet Auburn — uno de los lugares más emotivos"},{e:"🍑",t:"Ponce City Market al mediodía",d:"Mercado gourmet en una fábrica histórica de los años 20, con los mejores restaurantes de Atlanta"},{e:"🌳",t:"Piedmont Park al atardecer",d:"El gran parque urbano de Atlanta, con vistas del skyline — perfecto para descomprimir"},{e:"🎸",t:"Little Five Points de noche",d:"El barrio alternativo de Atlanta, con bares de barrio, disquerías y ambiente muy local"}],
+  "7/7":[{e:"🏟️",t:"Octavos en Mercedes-Benz Stadium, 12hs",d:"Uno de los estadios más modernos del mundo — llegar muy temprano para vivir el ambiente completo"},{e:"🥤",t:"World of Coca-Cola antes del partido",d:"El museo interactivo de Coca-Cola está a pasos del estadio — abre a las 10hs"},{e:"🍑",t:"The Optimist para cenar",d:"Mariscos y pescados frescos en un ambiente industrial reconvertido — uno de los mejores de Atlanta"},{e:"🏙️",t:"Buckhead Village de noche",d:"El barrio más animado de Atlanta — bares, restaurantes y la mejor vida nocturna"}],
+  "8/7":[{e:"🖼️",t:"High Museum of Art",d:"El mejor museo de arte del sur de EEUU — colecciones de arte americano, africano y europeo"},{e:"🌳",t:"Stone Mountain Park",d:"La roca de granito más grande del mundo, a 30 min de Atlanta — se puede subir y la vista es increíble"},{e:"🍗",t:"Hattie B's Hot Chicken",d:"El pollo picante estilo Nashville más famoso de Atlanta — hay que pedirlo 'hot' si se animan"},{e:"🎵",t:"East Atlanta Village",d:"El barrio más auténtico de Atlanta con bares de música indie y rock"}],
+  "9/7":[{e:"🇦🇷",t:"9 de julio volando sobre EEUU",d:"Feriado patrio argentino en pleno Mundial — un momento especial aunque sea a 10.000 metros"},{e:"🌊",t:"Fort Lauderdale Beach al llegar",d:"De vuelta en la base de operaciones de Florida — playa directa después del vuelo"},{e:"🦞",t:"Casimir Beach Bar & Grill",d:"Bar de playa local en Fort Lauderdale, mariscos frescos y cerveza fría al llegar"},{e:"🌅",t:"Atardecer en el muelle de Fort Lauderdale",d:"Ver el sol caer sobre el Atlántico desde el muelle es el plan perfecto para el 9 de julio"}],
+  "10/7":[{e:"🚤",t:"Día en los Keys: Key Largo",d:"A 1 hora de Fort Lauderdale — el arrecife de coral más largo de EEUU, ideal para snorkel"},{e:"🍽️",t:"The Foxy Brown, Fort Lauderdale",d:"Brunch de autor con ingredientes locales, uno de los más recomendados de la ciudad"},{e:"🌊",t:"Snorkel en el arrecife de FL",d:"La costa de Fort Lauderdale tiene un arrecife muy accesible — hay tours de medio día desde la playa"},{e:"🎶",t:"Revolution Live, Fort Lauderdale",d:"El mejor venue de música en vivo de Fort Lauderdale — ver qué artista toca esa noche"}],
+  "11/7":[{e:"🌅",t:"Último amanecer en la playa de Fort Lauderdale",d:"El viaje termina esta noche — madrugar para ver el sol salir sobre el Atlántico antes de volver"},{e:"☕",t:"Desayuno en Lester's Diner",d:"El diner más clásico de Fort Lauderdale, abierto desde 1968 y 24hs"},{e:"🛍️",t:"Compras de último momento en Aventura Mall",d:"El mall más grande de Florida, a 20 min de FL, para lo que falte antes del vuelo nocturno"},{e:"✈️",t:"Salida MIA 23:55 — vuelta a casa",d:"Llegada al EZE el 12/7 con el Mundial en el corazón y la mochila llena de recuerdos"}]
 };
 
 function toggleSug(row, dia) {
   var panel = row.nextElementSibling;
   if (!panel || !panel.classList.contains('day-suggestions')) return;
-
-  if (panel.classList.contains('open')) {
-    panel.classList.remove('open');
-    return;
-  }
-
-  document.querySelectorAll('.day-suggestions.open').forEach(function(p) {
-    p.classList.remove('open');
-  });
-
+  if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
+  document.querySelectorAll('.day-suggestions.open').forEach(function(p) { p.classList.remove('open'); });
   panel.classList.add('open');
-
   var sugs = SUGERENCIAS[dia];
   if (!sugs) { panel.innerHTML = '<div class="sug-item" style="color:var(--muted)">Día de viaje, ¡disfrutá el camino!</div>'; return; }
-
-  panel.innerHTML = '<div class="sug-title">✨ Qué hacer</div>' +
-    sugs.map(function(s) {
-      return '<div class="sug-item">' + s.e + ' <b>' + s.t + '</b> — ' + s.d + '</div>';
-    }).join('');
+  panel.innerHTML = '<div class="sug-title">✨ Qué hacer</div>' + sugs.map(function(s) {
+    return '<div class="sug-item">' + s.e + ' <b>' + s.t + '</b> — ' + s.d + '</div>';
+  }).join('');
 }
 
-
-// ─── FIXTURE DEL MUNDIAL ───────────────────────────────────────────────
 var CIUDAD_POR_DIA = {
   '11/6':'—','12/6':'—',
   '13/6':'Buenos Aires','14/6':'Miami','15/6':'Kansas City','16/6':'Kansas City',
@@ -718,14 +505,8 @@ function etToLocal(etStr, ciudad) {
   return h12 + ':' + min + ' ' + suffix;
 }
 var FIXTURE = [
-  {dia:'11/6',partidos:[
-    {eq:'Mexico vs Sudafrica',hora:'3:00 PM',sede:'Azteca, Mexico City',arg:false},
-    {eq:'Corea del Sur vs Chequia',hora:'10:00 PM',sede:'Akron, Zapopan',arg:false}
-  ]},
-  {dia:'12/6',partidos:[
-    {eq:'Canada vs Bosnia',hora:'3:00 PM',sede:'BMO, Toronto',arg:false},
-    {eq:'USA vs Paraguay',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}
-  ]},
+  {dia:'11/6',partidos:[{eq:'Mexico vs Sudafrica',hora:'3:00 PM',sede:'Azteca, Mexico City',arg:false},{eq:'Corea del Sur vs Chequia',hora:'10:00 PM',sede:'Akron, Zapopan',arg:false}]},
+  {dia:'12/6',partidos:[{eq:'Canada vs Bosnia',hora:'3:00 PM',sede:'BMO, Toronto',arg:false},{eq:'USA vs Paraguay',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
   {dia:'13/6',partidos:[{eq:'Brasil vs Marruecos',hora:'6:00 PM',sede:'MetLife, NJ',arg:false},{eq:'Haiti vs Escocia',hora:'9:00 PM',sede:'Gillette, Boston',arg:false}]},
   {dia:'14/6',partidos:[{eq:'Alemania vs Curazao',hora:'1:00 PM',sede:'NRG, Houston',arg:false},{eq:'Paises Bajos vs Japon',hora:'4:00 PM',sede:'AT&T, Dallas',arg:false},{eq:'Costa de Marfil vs Ecuador',hora:'7:00 PM',sede:'Lincoln, Phila.',arg:false},{eq:'Suecia vs Tunez',hora:'10:00 PM',sede:'BBVA, Monterrey',arg:false}]},
   {dia:'15/6',partidos:[{eq:'Espana vs Cabo Verde',hora:'12:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false},{eq:'Belgica vs Egipto',hora:'3:00 PM',sede:'Lumen Field, Seattle',arg:false},{eq:'Arabia Saudita vs Uruguay',hora:'6:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Iran vs Nueva Zelanda',hora:'9:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
@@ -754,149 +535,90 @@ var FIXTURE = [
   {dia:'9/7',partidos:[{eq:'Cuartos de final',hora:'4:00 PM',sede:'Gillette, Boston',arg:false}]},
   {dia:'10/7',partidos:[{eq:'Cuartos de final',hora:'3:00 PM',sede:'SoFi, Los Angeles',arg:false}]},
   {dia:'11/7',partidos:[{eq:'Cuartos de final',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false},{eq:'Cuartos de final',hora:'9:00 PM',sede:'Arrowhead, Kansas City',arg:false}]},
-  {dia:'12/7',partidos:[
-    {eq:'Cuartos de final',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}
-  ]},
-  {dia:'14/7',partidos:[
-    {eq:'Semifinal',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}
-  ]},
-  {dia:'15/7',partidos:[
-    {eq:'Semifinal',hora:'3:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false}
-  ]},
-  {dia:'18/7',partidos:[
-    {eq:'Tercer puesto',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false}
-  ]},
-  {dia:'19/7',partidos:[
-    {eq:'FINAL del Mundial 🏆',hora:'3:00 PM',sede:'MetLife, Nueva York/NJ',arg:false}
-  ]}
+  {dia:'12/7',partidos:[{eq:'Cuartos de final',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}]},
+  {dia:'14/7',partidos:[{eq:'Semifinal',hora:'3:00 PM',sede:'AT&T, Dallas',arg:false}]},
+  {dia:'15/7',partidos:[{eq:'Semifinal',hora:'3:00 PM',sede:'Mercedes-Benz, Atlanta',arg:false}]},
+  {dia:'18/7',partidos:[{eq:'Tercer puesto',hora:'5:00 PM',sede:'Hard Rock, Miami',arg:false}]},
+  {dia:'19/7',partidos:[{eq:'FINAL del Mundial 🏆',hora:'3:00 PM',sede:'MetLife, Nueva York/NJ',arg:false}]}
 ];
-// Convierte "13/6" -> Date object (año 2026)
-function diaToDate(dia) {
-  var p = dia.split('/');
-  return new Date(2026, parseInt(p[1])-1, parseInt(p[0]));
-}
-// Fecha de hoy normalizada a medianoche
-function today() {
-  var d = new Date();
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-}
-
-function renderDayCard(day, ciudad, isLast) {
+function diaToDate(dia) { var p = dia.split('/'); return new Date(2026, parseInt(p[1])-1, parseInt(p[0])); }
+function today() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function renderDayCard(day, ciudad) {
   var isCT = CT_CITIES.indexOf(ciudad) >= 0;
   var tzLabel = isCT ? 'CT' : 'ET';
   var hasArg = day.partidos.some(function(p){return p.arg;});
-  var html = '<div class="fix-day">';
-  html += '<div class="fix-day-header"><span class="fix-day-date">'+(hasArg?'🇦🇷 ':'')+day.dia+'</span><span class="fix-day-city">'+ciudad+'</span></div>';
+  var html = '<div class="fix-day"><div class="fix-day-header"><span class="fix-day-date">'+(hasArg?'🇦🇷 ':'')+day.dia+'</span><span class="fix-day-city">'+ciudad+'</span></div>';
   day.partidos.forEach(function(p) {
     var loc = etToLocal(p.hora, ciudad);
     html += '<div class="fix-match'+(p.arg?' arg':'')+'"><div><div class="fix-teams">'+(p.arg?'🇦🇷 ':'')+p.eq+'</div><div class="fix-meta">'+p.sede+'</div></div>';
     if (loc) html += '<div><div class="fix-time">'+loc+'</div><div class="fix-tz">'+tzLabel+'</div></div>';
     html += '</div>';
   });
-  html += '</div>';
-  return html;
+  return html + '</div>';
 }
-
 function renderFixture() {
-  // Sección completa
   var el = document.getElementById('fixture-list');
-  if (el) {
-    var html = '';
-    FIXTURE.forEach(function(day) {
-      html += renderDayCard(day, CIUDAD_POR_DIA[day.dia] || '', false);
-    });
-    el.innerHTML = html;
-  }
-
-  // Preview dinámico: próximos 3 días con partidos desde hoy
+  if (el) { var h=''; FIXTURE.forEach(function(d){h+=renderDayCard(d,CIUDAD_POR_DIA[d.dia]||'');}); el.innerHTML=h; }
   var pf = document.getElementById('preview-fixture');
   if (pf) {
-    var t = today();
-    var proximos = FIXTURE.filter(function(day) {
-      return diaToDate(day.dia) >= t;
-    }).slice(0, 3);
-    if (proximos.length === 0) {
-      pf.innerHTML = '<div style="font-size:13px;color:var(--muted);padding:8px 0;">El Mundial ya terminó 🏆</div>';
-    } else {
-      pf.innerHTML = proximos.map(function(day) {
-        return renderDayCard(day, CIUDAD_POR_DIA[day.dia] || '', false);
-      }).join('');
-    }
+    var t=today(), prox=FIXTURE.filter(function(d){return diaToDate(d.dia)>=t;}).slice(0,3);
+    pf.innerHTML = prox.length ? prox.map(function(d){return renderDayCard(d,CIUDAD_POR_DIA[d.dia]||'');}).join('') : '<div style="font-size:13px;color:var(--muted);padding:8px 0;">El Mundial ya terminó 🏆</div>';
   }
 }
 renderFixture();
 
-// Preview dinámico del itinerario: próximos 3 días del viaje desde hoy
 var ITINERARIO_DIAS = [
-  {dia:'13/6',fecha:'Sáb 13/6',ciudad:'Buenos Aires',nota:'Salida EZE 22:40hs',badges:[{cls:'b-vac',txt:'fin de semana'}]},
-  {dia:'14/6',fecha:'Dom 14/6',ciudad:'Miami → Kansas',nota:'Llegada 7hs, vuelo 13hs',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'13/6',fecha:'Sáb 13/6',ciudad:'Buenos Aires',nota:'Salida EZE 22:40hs',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
+  {dia:'14/6',fecha:'Dom 14/6',ciudad:'Miami → Kansas',nota:'Llegada 7hs, vuelo 13hs',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
   {dia:'15/6',fecha:'Lun 15/6',ciudad:'Kansas City',nota:'Feriado',badges:[{cls:'b-holiday',txt:'feriado'}]},
   {dia:'16/6',fecha:'Mar 16/6',ciudad:'Kansas City',nota:'ARG-ALG 21hs',badges:[{cls:'b-work',txt:'trabajan'},{cls:'b-ok',txt:'✓ entrada'}]},
   {dia:'17/6',fecha:'Mié 17/6',ciudad:'Kansas → Chicago',nota:'Traslado en auto · The Strokes 🎸',badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'18/6',fecha:'Jue 18/6',ciudad:'Chicago',nota:"Green Mill, Buddy Guy's",badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'19/6',fecha:'Vie 19/6',ciudad:'Chicago',nota:'—',badges:[{cls:'b-vac',txt:'vacaciones'}]},
-  {dia:'20/6',fecha:'Sáb 20/6',ciudad:'Chicago',nota:'—',badges:[{cls:'b-vac',txt:'fin de semana'}]},
-  {dia:'21/6',fecha:'Dom 21/6',ciudad:'Chicago → Dallas',nota:'Salida MDW 20:55',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'20/6',fecha:'Sáb 20/6',ciudad:'Chicago',nota:'—',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
+  {dia:'21/6',fecha:'Dom 21/6',ciudad:'Chicago → Dallas',nota:'Salida MDW 20:55',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
   {dia:'22/6',fecha:'Lun 22/6',ciudad:'Dallas',nota:'ARG-AUT 13hs',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-wip',txt:'WIP'}]},
   {dia:'23/6',fecha:'Mar 23/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
   {dia:'24/6',fecha:'Mié 24/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
   {dia:'25/6',fecha:'Jue 25/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
   {dia:'26/6',fecha:'Vie 26/6',ciudad:'Dallas',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
-  {dia:'27/6',fecha:'Sáb 27/6',ciudad:'Dallas',nota:'ARG-JOR 22hs',badges:[{cls:'b-vac',txt:'fin de semana'},{cls:'b-ok',txt:'✓ entrada'}]},
-  {dia:'28/6',fecha:'Dom 28/6',ciudad:'→ New Orleans',nota:'Roadtrip Dallas–Lafayette–NOLA',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'27/6',fecha:'Sáb 27/6',ciudad:'Dallas',nota:'ARG-JOR 22hs',badges:[{cls:'b-weekend',txt:'fin de semana'},{cls:'b-ok',txt:'✓ entrada'}]},
+  {dia:'28/6',fecha:'Dom 28/6',ciudad:'→ New Orleans',nota:'Roadtrip Dallas–Lafayette–NOLA',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
   {dia:'29/6',fecha:'Lun 29/6',ciudad:'New Orleans',nota:'—',badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'30/6',fecha:'Mar 30/6',ciudad:'New Orleans',nota:'Preservation Hall (jazz)',badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'1/7',fecha:'Mié 1/7',ciudad:'→ Destin, FL',nota:'Roadtrip NOLA–Destin · Spark by Hilton 🏨',badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'2/7',fecha:'Jue 2/7',ciudad:'→ Miami',nota:'Roadtrip Destin–Miami',badges:[{cls:'b-vac',txt:'vacaciones'}]},
   {dia:'3/7',fecha:'Vie 3/7',ciudad:'Miami',nota:'Posible 16avos 18hs',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-wip',txt:'WIP'}]},
-  {dia:'4/7',fecha:'Sáb 4/7',ciudad:'Miami',nota:'—',badges:[{cls:'b-vac',txt:'fin de semana'}]},
-  {dia:'5/7',fecha:'Dom 5/7',ciudad:'FLL → Atlanta',nota:'Delta 1670 · Sale 20:59hs FLL · Llega 23:11hs ATL',badges:[{cls:'b-vac',txt:'fin de semana'}]},
+  {dia:'4/7',fecha:'Sáb 4/7',ciudad:'Miami',nota:'—',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
+  {dia:'5/7',fecha:'Dom 5/7',ciudad:'FLL → Atlanta',nota:'Delta 1670 · Sale 20:59hs FLL · Llega 23:11hs ATL',badges:[{cls:'b-weekend',txt:'fin de semana'}]},
   {dia:'6/7',fecha:'Lun 6/7',ciudad:'Atlanta',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
   {dia:'7/7',fecha:'Mar 7/7',ciudad:'Atlanta',nota:'Posibles 8vos de final',badges:[{cls:'b-vac',txt:'vacaciones'},{cls:'b-ok',txt:'✓ entrada'}]},
   {dia:'8/7',fecha:'Mié 8/7',ciudad:'Atlanta',nota:'—',badges:[{cls:'b-work',txt:'trabajan'}]},
   {dia:'9/7',fecha:'Jue 9/7',ciudad:'ATL → FLL',nota:'Delta 1094 · Sale 8:05hs ATL · Llega 9:59hs FLL',badges:[{cls:'b-holiday',txt:'feriado 9/7'}]},
   {dia:'10/7',fecha:'Vie 10/7',ciudad:'Miami',nota:'—',badges:[{cls:'b-holiday',txt:'feriado'}]},
-  {dia:'11/7',fecha:'Sáb 11/7',ciudad:'Miami',nota:'Salida MIA 23:55',badges:[{cls:'b-vac',txt:'fin de semana'}]}
+  {dia:'11/7',fecha:'Sáb 11/7',ciudad:'Miami',nota:'Salida MIA 23:55',badges:[{cls:'b-weekend',txt:'fin de semana'}]}
 ];
 function renderPreviewItinerario() {
   var el = document.getElementById('preview-itinerario');
   if (!el) return;
-  var t = today();
-  var proximos = ITINERARIO_DIAS.filter(function(d) {
-    return diaToDate(d.dia) >= t;
-  }).slice(0, 3);
-  if (proximos.length === 0) {
-    el.innerHTML = '<div style="font-size:13px;color:var(--muted);padding:8px 0;">El viaje terminó 🏠</div>';
-    return;
-  }
-  el.innerHTML = proximos.map(function(d, i) {
-    var isLast = i === proximos.length - 1;
-    var badges = d.badges.map(function(b){ return '<span class="badge '+b.cls+'">'+b.txt+'</span>'; }).join('');
-    return '<div class="day-row" style="padding:8px 0;'+(isLast?'border-bottom:none;':'')+'">'
-      +'<span class="day-date">'+d.fecha+'</span>'
-      +'<div><div class="day-city">'+d.ciudad+'</div><div class="day-note">'+d.nota+'</div></div>'
-      +'<div class="day-badges">'+badges+'</div>'
-      +'</div>';
+  var t=today(), prox=ITINERARIO_DIAS.filter(function(d){return diaToDate(d.dia)>=t;}).slice(0,3);
+  if (!prox.length) { el.innerHTML='<div style="font-size:13px;color:var(--muted);padding:8px 0;">El viaje terminó 🏠</div>'; return; }
+  el.innerHTML = prox.map(function(d,i) {
+    var isLast=i===prox.length-1;
+    var badges=d.badges.map(function(b){return '<span class="badge '+b.cls+'">'+b.txt+'</span>';}).join('');
+    return '<div class="day-row" style="padding:8px 0;'+(isLast?'border-bottom:none;':'')+'"><span class="day-date">'+d.fecha+'</span><div><div class="day-city">'+d.ciudad+'</div><div class="day-note">'+d.nota+'</div></div><div class="day-badges">'+badges+'</div></div>';
   }).join('');
 }
 renderPreviewItinerario();
 
-var sw = { vos: true, ivan: true, edu: true };
-window._splitWho = sw;
-var N = { vos: 'Vicky', ivan: 'Ivan', edu: 'Eduardo' };
-
-function toggleC(w) {
-  sw[w] = !sw[w];
-  window._splitWho = sw;
-  var id = w === 'vos' ? 'c-v' : w === 'ivan' ? 'c-i' : 'c-e';
-  document.getElementById(id).classList.toggle('on', sw[w]);
-}
+var sw={vos:true,ivan:true,edu:true};
+window._splitWho=sw;
+function toggleC(w){sw[w]=!sw[w];window._splitWho=sw;var id=w==='vos'?'c-v':w==='ivan'?'c-i':'c-e';document.getElementById(id).classList.toggle('on',sw[w]);}
 </script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyAzkkc-Eu9-S6Ygyh2KtzN7wLs_fAUvnlI",
   authDomain: "mundial2026-3e851.firebaseapp.com",
@@ -906,107 +628,73 @@ const firebaseConfig = {
   messagingSenderId: "179338374035",
   appId: "1:179338374035:web:390d7cb93326c47c719666"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const gastosRef = ref(db, 'gastos');
-const names = { vos: 'Vicky', ivan: 'Ivan', edu: 'Eduardo' };
-const avClass = { vos: 'av-v', ivan: 'av-i', edu: 'av-e' };
-const initials = { vos: 'VO', ivan: 'IV', edu: 'ED' };
-
+const names = {vos:'Vicky',ivan:'Ivan',edu:'Eduardo'};
+const avClass = {vos:'av-v',ivan:'av-i',edu:'av-e'};
+const initials = {vos:'VO',ivan:'IV',edu:'ED'};
 onValue(gastosRef, (snapshot) => {
   const data = snapshot.val();
-  const exps = data ? Object.entries(data).map(([key, val]) => ({ key, ...val })) : [];
+  const exps = data ? Object.entries(data).map(([key,val])=>({key,...val})) : [];
   renderExpenses(exps);
 });
-
-// Pre-populate today's date on load
-(function() {
-  var today = new Date();
-  var yyyy = today.getFullYear();
-  var mm = String(today.getMonth()+1).padStart(2,'0');
-  var dd = String(today.getDate()).padStart(2,'0');
-  var fechaEl = document.getElementById('e-fecha');
-  if (fechaEl) fechaEl.value = yyyy+'-'+mm+'-'+dd;
+(function(){
+  var t=new Date(), yyyy=t.getFullYear(), mm=String(t.getMonth()+1).padStart(2,'0'), dd=String(t.getDate()).padStart(2,'0');
+  var el=document.getElementById('e-fecha'); if(el) el.value=yyyy+'-'+mm+'-'+dd;
 })();
-
 window.addExpFirebase = function() {
-  const desc = document.getElementById('e-desc').value.trim();
-  const monto = parseFloat(document.getElementById('e-monto').value);
-  const pag = document.getElementById('e-quien').value;
-  const sw = window._splitWho || { vos: true, ivan: true, edu: true };
-  const who = Object.keys(sw).filter(k => sw[k]);
-  if (!desc || isNaN(monto) || monto <= 0 || !who.length) {
-    alert('Completá todos los campos');
-    return;
-  }
-  const fecha = document.getElementById('e-fecha').value;
-  push(gastosRef, { desc, monto, pag, who, fecha });
-  document.getElementById('e-desc').value = '';
-  document.getElementById('e-monto').value = '';
-  document.getElementById('e-fecha').value = '';
+  const desc=document.getElementById('e-desc').value.trim();
+  const monto=parseFloat(document.getElementById('e-monto').value);
+  const pag=document.getElementById('e-quien').value;
+  const sw=window._splitWho||{vos:true,ivan:true,edu:true};
+  const who=Object.keys(sw).filter(k=>sw[k]);
+  if(!desc||isNaN(monto)||monto<=0||!who.length){alert('Completá todos los campos');return;}
+  const fecha=document.getElementById('e-fecha').value;
+  push(gastosRef,{desc,monto,pag,who,fecha});
+  document.getElementById('e-desc').value='';
+  document.getElementById('e-monto').value='';
+  document.getElementById('e-fecha').value='';
 };
-
-window.delExpFirebase = function(key) {
-  remove(ref(db, 'gastos/' + key));
-};
-
+window.delExpFirebase = function(key) { remove(ref(db,'gastos/'+key)); };
 function renderExpenses(exps) {
-  const list = document.getElementById('exp-list');
-  const statV = document.getElementById('stat-v');
-  if (!list) return;
-  if (!exps.length) {
-    list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:16px 0;">Sin gastos cargados aún</div>';
-    if (statV) statV.textContent = '$0';
-    renderBalance([]);
-    return;
+  const list=document.getElementById('exp-list');
+  const statV=document.getElementById('stat-v');
+  if(!list) return;
+  if(!exps.length){
+    list.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:16px 0;">Sin gastos cargados aún</div>';
+    if(statV) statV.textContent='$0';
+    renderBalance([]);return;
   }
-  let tot = 0;
-  list.innerHTML = exps.map((e) => {
-    tot += e.monto;
-    const sh = e.monto / e.who.length;
-    const pts = e.who.map(p => `${names[p]}: $${sh.toFixed(2)}`).join(' · ');
-    return `<div class="erow">
-      <div><div class="edesc">${e.desc}</div><div class="emeta">Pagó ${names[e.pag]} · ${pts}</div></div>
-      <div style="text-align:right;"><div class="etotal">$${e.monto.toFixed(2)}</div><button class="bdel" onclick="delExpFirebase('${e.key}')">✕</button></div>
-    </div>`;
+  let tot=0;
+  list.innerHTML=exps.map(e=>{
+    tot+=e.monto;
+    const sh=e.monto/e.who.length;
+    const pts=e.who.map(p=>`${names[p]}: $${sh.toFixed(2)}`).join(' · ');
+    return `<div class="erow"><div><div class="edesc">${e.desc}</div><div class="emeta">Pagó ${names[e.pag]} · ${pts}</div></div><div style="text-align:right;"><div class="etotal">$${e.monto.toFixed(2)}</div><button class="bdel" onclick="delExpFirebase('${e.key}')">✕</button></div></div>`;
   }).join('');
-  if (statV) statV.textContent = '$' + tot.toFixed(2);
+  if(statV) statV.textContent='$'+tot.toFixed(2);
   renderBalance(exps);
 }
-
 function renderBalance(exps) {
-  const bal = { vos: 0, ivan: 0, edu: 0 };
-  exps.forEach(e => {
-    bal[e.pag] += e.monto;
-    const sh = e.monto / e.who.length;
-    e.who.forEach(p => { bal[p] -= sh; });
-  });
-  const bc = document.getElementById('bal-content');
-  if (!bc) return;
-  if (!exps.length) {
-    bc.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:12px 0;">Cargá gastos para ver el balance</div>';
-    return;
-  }
-  let html = ['vos','ivan','edu'].map(p => {
-    const b = bal[p];
-    const str = b >= 0 ? '+$' + b.toFixed(2) : '-$' + Math.abs(b).toFixed(2);
-    const cls = b > 0.01 ? 'bpos' : b < -0.01 ? 'bneg' : 'bzero';
-    const lbl = b > 0.01 ? 'le deben' : b < -0.01 ? 'debe' : 'al día';
+  const bal={vos:0,ivan:0,edu:0};
+  exps.forEach(e=>{bal[e.pag]+=e.monto;const sh=e.monto/e.who.length;e.who.forEach(p=>{bal[p]-=sh;});});
+  const bc=document.getElementById('bal-content');
+  if(!bc) return;
+  if(!exps.length){bc.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:12px 0;">Cargá gastos para ver el balance</div>';return;}
+  let html=['vos','ivan','edu'].map(p=>{
+    const b=bal[p];
+    const str=b>=0?'+$'+b.toFixed(2):'-$'+Math.abs(b).toFixed(2);
+    const cls=b>0.01?'bpos':b<-0.01?'bneg':'bzero';
+    const lbl=b>0.01?'le deben':b<-0.01?'debe':'al día';
     return `<div class="brow"><div class="bperson"><div class="av ${avClass[p]}">${initials[p]}</div><div class="bname">${names[p]}</div></div><div><div class="bamount ${cls}">${str}</div><div class="blabel">${lbl}</div></div></div>`;
   }).join('');
-  let d = ['vos','ivan','edu'].filter(p => bal[p] < -0.01).map(p => ({ p, b: bal[p] }));
-  let c = ['vos','ivan','edu'].filter(p => bal[p] > 0.01).map(p => ({ p, b: bal[p] }));
-  let s = [];
-  while (d.length && c.length) {
-    const a = Math.min(Math.abs(d[0].b), c[0].b);
-    if (a > 0.01) s.push(`${names[d[0].p]} le paga <strong>$${a.toFixed(2)}</strong> a ${names[c[0].p]}`);
-    d[0].b += a; c[0].b -= a;
-    if (Math.abs(d[0].b) < 0.01) d.shift();
-    if (Math.abs(c[0].b) < 0.01) c.shift();
-  }
-  if (s.length) html += `<div class="sbox"><div class="stitle">Cómo saldar</div>${s.map(x => `<div class="sitem">${x}</div>`).join('')}</div>`;
-  bc.innerHTML = html;
+  let d=['vos','ivan','edu'].filter(p=>bal[p]<-0.01).map(p=>({p,b:bal[p]}));
+  let c=['vos','ivan','edu'].filter(p=>bal[p]>0.01).map(p=>({p,b:bal[p]}));
+  let s=[];
+  while(d.length&&c.length){const a=Math.min(Math.abs(d[0].b),c[0].b);if(a>0.01)s.push(`${names[d[0].p]} le paga <strong>$${a.toFixed(2)}</strong> a ${names[c[0].p]}`);d[0].b+=a;c[0].b-=a;if(Math.abs(d[0].b)<0.01)d.shift();if(Math.abs(c[0].b)<0.01)c.shift();}
+  if(s.length) html+=`<div class="sbox"><div class="stitle">Cómo saldar</div>${s.map(x=>`<div class="sitem">${x}</div>`).join('')}</div>`;
+  bc.innerHTML=html;
 }
 </script>
 </body>
